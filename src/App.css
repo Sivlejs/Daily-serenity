@@ -1,19 +1,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --primary: #7C3AED;
-  --primary-light: #A78BFA;
-  --secondary: #0D9488;
-  --secondary-light: #2DD4BF;
-  --background: #F0F9FF;
-  --surface: #FFFFFF;
-  --text: #1E293B;
-  --text-light: #64748B;
-  --accent: #86EFAC;
-  --error: #EF4444;
-  --warning: #F59E0B;
-  --border: #E2E8F0;
-  --shadow: rgba(0, 0, 0, 0.08);
+  /* Kemetic color palette – golds, deep blues, earthy tones */
+  --primary: #B8860B;        /* dark gold */
+  --primary-light: #DAA520;  /* golden rod */
+  --secondary: #1B3A6B;      /* deep lapis blue */
+  --secondary-light: #2E5FA3;/* cobalt blue */
+  --background: #FDF6E3;     /* papyrus / warm parchment */
+  --surface: #FFFDF5;        /* light papyrus surface */
+  --text: #2D1B00;           /* dark warm brown */
+  --text-light: #7A5C2E;     /* earthy mid tone */
+  --accent: #C2915C;         /* terracotta / burnt sienna */
+  --error: #C0392B;
+  --warning: #E67E22;
+  --border: #D4B483;         /* sandy border */
+  --shadow: rgba(90, 50, 0, 0.10);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -21,7 +22,7 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   background-color: var(--background);
   color: var(--text);
   line-height: 1.6;

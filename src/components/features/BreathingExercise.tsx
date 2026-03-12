@@ -13,10 +13,10 @@ interface BreathingExerciseProps {
 type Phase = 'inhale' | 'hold' | 'exhale' | 'idle';
 
 const phaseColors: Record<Phase, string> = {
-  inhale: '#7C3AED',
-  hold: '#F59E0B',
-  exhale: '#0D9488',
-  idle: '#94A3B8',
+  inhale: '#1B3A6B',    /* deep lapis blue – drawing in life */
+  hold: '#B8860B',      /* Kemetic gold – stillness at the peak */
+  exhale: '#8B4513',    /* earthy sienna – releasing to the earth */
+  idle: '#C2915C',      /* terracotta – at rest */
 };
 
 const phaseLabels: Record<Phase, string> = {
@@ -145,12 +145,12 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
   return (
     <Card>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-        <h3 style={{ color: '#1E293B' }}>{exercise.name}</h3>
-        {completed && <span style={{ color: '#0D9488', fontWeight: 600 }}>✓ Done</span>}
+        <h3 style={{ color: '#1B3A6B', fontFamily: 'Georgia, serif' }}>{exercise.name}</h3>
+        {completed && <span style={{ color: '#B8860B', fontWeight: 600 }}>☥ Done</span>}
       </div>
-      <p style={{ color: '#64748B', fontSize: '0.9rem', marginBottom: '8px' }}>{exercise.description}</p>
-      <p style={{ color: '#7C3AED', fontSize: '0.85rem', fontWeight: 500, marginBottom: '16px' }}>
-        💡 {exercise.benefit}
+      <p style={{ color: '#7A5C2E', fontSize: '0.9rem', marginBottom: '8px' }}>{exercise.description}</p>
+      <p style={{ color: '#B8860B', fontSize: '0.85rem', fontWeight: 500, marginBottom: '16px' }}>
+        ☥ {exercise.benefit}
       </p>
 
       {/* Voice toggle */}
@@ -163,11 +163,12 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
               fontSize: '0.78rem',
               padding: '4px 10px',
               borderRadius: '999px',
-              border: `1.5px solid ${voiceOn ? '#7C3AED' : '#CBD5E1'}`,
-              background: voiceOn ? '#7C3AED15' : 'transparent',
-              color: voiceOn ? '#7C3AED' : '#94A3B8',
+              border: `1.5px solid ${voiceOn ? '#B8860B' : '#D4B483'}`,
+              background: voiceOn ? '#B8860B15' : 'transparent',
+              color: voiceOn ? '#B8860B' : '#7A5C2E',
               cursor: 'pointer',
               fontWeight: 600,
+              fontFamily: 'Georgia, serif',
             }}
           >
             🎙 Voice {voiceOn ? 'On' : 'Off'}

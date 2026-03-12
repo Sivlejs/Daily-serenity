@@ -27,9 +27,9 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 4,
     benefit: 'Reduces stress and improves focus',
     prompts: {
-      inhale: 'Breathe in slowly',
-      hold: 'Hold your breath',
-      exhale: 'Breathe out slowly',
+      inhale: 'Inhale slowly and deeply through your nose, filling your lungs completely',
+      hold: 'Hold your breath gently — keep your body still and relaxed',
+      exhale: 'Exhale fully through your mouth, releasing all tension with the breath',
     },
   },
   {
@@ -42,9 +42,9 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 4,
     benefit: 'Promotes relaxation and better sleep',
     prompts: {
-      inhale: 'Breathe in through your nose',
-      hold: 'Hold gently',
-      exhale: 'Breathe out through your mouth',
+      inhale: 'Breathe in through your nose quietly and steadily for four counts',
+      hold: 'Hold gently — let the breath settle throughout your body',
+      exhale: 'Exhale completely through your mouth with a long, soft whooshing sound',
     },
   },
   {
@@ -57,9 +57,9 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 6,
     benefit: 'Activates the parasympathetic nervous system',
     prompts: {
-      inhale: 'Breathe deep into your belly',
-      hold: 'Pause at the top',
-      exhale: 'Release fully and slowly',
+      inhale: 'Breathe deep into your belly through your nose — feel your abdomen rise gently',
+      hold: 'Pause at the top, sensing the fullness of breath in your body',
+      exhale: 'Slowly release through your mouth, letting your belly fall naturally',
     },
   },
   {
@@ -72,9 +72,39 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 5,
     benefit: 'Increases energy and mental clarity',
     prompts: {
-      inhale: 'Sharp inhale through the nose',
-      hold: 'Brief pause',
-      exhale: 'Long exhale through the mouth',
+      inhale: 'Take a sharp, invigorating inhale through your nose to awaken your senses',
+      hold: 'Hold briefly — feel the energy gathering',
+      exhale: 'Release fully through your mouth in one long, powerful breath',
+    },
+  },
+  {
+    id: 'b5',
+    name: 'Kemetic Calm Breath',
+    description: 'A slow, rhythmic breath pattern inspired by ancient meditative traditions for deep inner peace.',
+    inhale: 6,
+    hold: 3,
+    exhale: 7,
+    cycles: 5,
+    benefit: 'Deepens calm and connects to inner stillness',
+    prompts: {
+      inhale: 'Breathe in through your nose slowly and silently, as if drawing in golden light',
+      hold: 'Hold at the peak — allow the sacred breath to nourish every cell',
+      exhale: 'Exhale through your mouth in a long, smooth flow, releasing all that no longer serves you',
+    },
+  },
+  {
+    id: 'b6',
+    name: 'Grief Release Breath',
+    description: 'A tender, compassionate breath practice to help move through grief and sorrow with gentle awareness.',
+    inhale: 4,
+    hold: 2,
+    exhale: 8,
+    cycles: 4,
+    benefit: 'Gently releases held emotions and soothes the heart',
+    prompts: {
+      inhale: 'Breathe in softly through your nose — breathe in compassion for yourself',
+      hold: 'Rest here tenderly, holding both the pain and the love',
+      exhale: 'Let it all move through you and out through your mouth — you do not have to hold this alone',
     },
   },
 ];

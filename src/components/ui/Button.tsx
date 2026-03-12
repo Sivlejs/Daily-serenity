@@ -20,14 +20,15 @@ const baseStyle: CSSProperties = {
   cursor: 'pointer',
   transition: 'all 0.2s ease',
   border: 'none',
-  fontFamily: 'inherit',
+  fontFamily: 'Georgia, serif',
+  letterSpacing: '0.03em',
 };
 
 const variantStyles: Record<string, CSSProperties> = {
-  primary: { background: '#7C3AED', color: '#fff' },
-  secondary: { background: '#0D9488', color: '#fff' },
-  outline: { background: 'transparent', color: '#7C3AED', border: '2px solid #7C3AED' },
-  ghost: { background: 'transparent', color: '#7C3AED' },
+  primary: { background: '#B8860B', color: '#FDF6E3', border: '2px solid #DAA520' },
+  secondary: { background: '#1B3A6B', color: '#DAA520', border: '2px solid #2E5FA3' },
+  outline: { background: 'transparent', color: '#B8860B', border: '2px solid #B8860B' },
+  ghost: { background: 'transparent', color: '#B8860B' },
 };
 
 const sizeStyles: Record<string, CSSProperties> = {
