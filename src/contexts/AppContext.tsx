@@ -12,7 +12,7 @@ import { getItem, setItem, removeItem } from '../utils/storage';
 interface DailyGuide {
   meditation: Meditation;
   breathingExercise: BreathingExercise;
-  meals: { breakfast: MealSuggestion; lunch: MealSuggestion; dinner: MealSuggestion };
+  meals: { breakfast: MealSuggestion; lunch: MealSuggestion; dinner: MealSuggestion; snack: MealSuggestion };
   completedActivities: string[];
   date: string;
 }
@@ -29,12 +29,20 @@ interface AppContextType {
   questionnaireAnswers: Record<string, string>;
   saveQuestionnaireAnswers: (answers: Record<string, string>) => void;
   resetProgress: () => void;
+  currentMood: number | null;
+  setMood: (mood: number) => void;
+  journalEntry: string;
+  setJournalEntry: (entry: string) => void;
+  streak: number;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
 
 const DS_PROGRESS_KEY = 'ds_daily_progress';
 const DS_ANSWERS_KEY = 'ds_questionnaire_answers';
+const DS_MOOD_KEY = 'ds_daily_mood';
+const DS_JOURNAL_KEY = 'ds_daily_journal';
+const DS_STREAK_KEY = 'ds_streak';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useApp(): AppContextType {
@@ -66,12 +74,57 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     () => getItem<Record<string, string>>(DS_ANSWERS_KEY) ?? {},
   );
 
+  // Mood: stored as { mood: number; date: string }
+  const [currentMood, setCurrentMoodState] = useState<number | null>(() => {
+    const stored = getItem<{ mood: number; date: string }>(DS_MOOD_KEY);
+    if (stored && stored.date === today) return stored.mood;
+    return null;
+  });
+
+  // Journal: stored as { entry: string; date: string }
+  const [journalEntry, setJournalEntryState] = useState<string>(() => {
+    const stored = getItem<{ entry: string; date: string }>(DS_JOURNAL_KEY);
+    if (stored && stored.date === today) return stored.entry;
+    return '';
+  });
+
+  // Streak: stored as { count: number; lastDate: string }
+  const [streak, setStreak] = useState<number>(() => {
+    const stored = getItem<{ count: number; lastDate: string }>(DS_STREAK_KEY);
+    if (!stored) return 0;
+    const yesterday = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
+    if (stored.lastDate === today || stored.lastDate === yesterday) return stored.count;
+    // Streak is broken
+    return 0;
+  });
+
   const markActivityComplete = (activityId: string): void => {
     setDailyGuide((prev) => {
       if (!prev) return prev;
       if (prev.completedActivities.includes(activityId)) return prev;
       const updated = { ...prev, completedActivities: [...prev.completedActivities, activityId] };
       setItem<DailyProgress>(DS_PROGRESS_KEY, { completedActivities: updated.completedActivities, date: today });
+
+      // Update streak when all core activities are completed
+      const coreActivities = [prev.meditation.id, prev.breathingExercise.id];
+      const allCoreCompleted = coreActivities.every(
+        (id) => updated.completedActivities.includes(id),
+      );
+      if (allCoreCompleted) {
+        const stored = getItem<{ count: number; lastDate: string }>(DS_STREAK_KEY);
+        const yesterday = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
+        let newCount = 1;
+        if (stored) {
+          if (stored.lastDate === today) {
+            newCount = stored.count;
+          } else if (stored.lastDate === yesterday) {
+            newCount = stored.count + 1;
+          }
+        }
+        setItem(DS_STREAK_KEY, { count: newCount, lastDate: today });
+        setStreak(newCount);
+      }
+
       return updated;
     });
   };
@@ -84,18 +137,44 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setQuestionnaireAnswers(answers);
   };
 
+  const setMood = (mood: number): void => {
+    setItem(DS_MOOD_KEY, { mood, date: today });
+    setCurrentMoodState(mood);
+  };
+
+  const setJournalEntry = (entry: string): void => {
+    setItem(DS_JOURNAL_KEY, { entry, date: today });
+    setJournalEntryState(entry);
+  };
+
   const resetProgress = (): void => {
     removeItem(DS_PROGRESS_KEY);
     removeItem(DS_ANSWERS_KEY);
+    removeItem(DS_MOOD_KEY);
+    removeItem(DS_JOURNAL_KEY);
     setDailyGuide((prev) =>
       prev ? { ...prev, completedActivities: [] } : prev,
     );
     setQuestionnaireAnswers({});
+    setCurrentMoodState(null);
+    setJournalEntryState('');
   };
 
   return (
     <AppContext.Provider
-      value={{ dailyGuide, markActivityComplete, isActivityComplete, questionnaireAnswers, saveQuestionnaireAnswers, resetProgress }}
+      value={{
+        dailyGuide,
+        markActivityComplete,
+        isActivityComplete,
+        questionnaireAnswers,
+        saveQuestionnaireAnswers,
+        resetProgress,
+        currentMood,
+        setMood,
+        journalEntry,
+        setJournalEntry,
+        streak,
+      }}
     >
       {children}
     </AppContext.Provider>
