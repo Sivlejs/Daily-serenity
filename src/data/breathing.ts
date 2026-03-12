@@ -27,9 +27,9 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 4,
     benefit: 'Reduces stress and improves focus',
     prompts: {
-      inhale: 'Breathe in slowly',
-      hold: 'Hold your breath',
-      exhale: 'Breathe out slowly',
+      inhale: 'Inhale slowly and deeply through your nose',
+      hold: 'Hold gently, retain the breath',
+      exhale: 'Exhale fully and steadily through your mouth',
     },
   },
   {
@@ -42,9 +42,9 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 4,
     benefit: 'Promotes relaxation and better sleep',
     prompts: {
-      inhale: 'Breathe in through your nose',
-      hold: 'Hold gently',
-      exhale: 'Breathe out through your mouth',
+      inhale: 'Breathe in through your nose, filling your lungs completely',
+      hold: 'Hold gently, letting the breath settle',
+      exhale: 'Release slowly and fully through your mouth with a soft whoosh',
     },
   },
   {
@@ -57,9 +57,9 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 6,
     benefit: 'Activates the parasympathetic nervous system',
     prompts: {
-      inhale: 'Breathe deep into your belly',
-      hold: 'Pause at the top',
-      exhale: 'Release fully and slowly',
+      inhale: 'Inhale through your nose, letting your belly rise like the sun',
+      hold: 'Pause at the top, feeling the fullness',
+      exhale: 'Exhale through your mouth, letting your belly fall gently',
     },
   },
   {
@@ -72,9 +72,24 @@ export const breathingExercises: BreathingExercise[] = [
     cycles: 5,
     benefit: 'Increases energy and mental clarity',
     prompts: {
-      inhale: 'Sharp inhale through the nose',
-      hold: 'Brief pause',
-      exhale: 'Long exhale through the mouth',
+      inhale: 'Sharp, crisp inhale through the nose — awaken your senses',
+      hold: 'Brief pause at the peak',
+      exhale: 'Long, releasing exhale through the mouth — let go completely',
+    },
+  },
+  {
+    id: 'b5',
+    name: 'Sacred Nadi Shodhana',
+    description: 'Inspired by ancient alternate nostril breathing to balance the mind and restore harmony.',
+    inhale: 4,
+    hold: 4,
+    exhale: 6,
+    cycles: 5,
+    benefit: 'Balances the nervous system and clears the mind',
+    prompts: {
+      inhale: 'Breathe in gently and fully through your nose, drawing in calm energy',
+      hold: 'Hold the sacred breath, let it purify and balance you',
+      exhale: 'Release slowly and completely through your nose, letting go with gratitude',
     },
   },
 ];

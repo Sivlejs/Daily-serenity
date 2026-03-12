@@ -52,8 +52,11 @@ const DashboardPage: FC = () => {
   const sectionTitleStyle: CSSProperties = {
     fontSize: '1.25rem',
     fontWeight: 700,
-    color: '#1E293B',
+    color: '#1B3A6B',
     marginBottom: '16px',
+    borderLeft: '4px solid #C8970A',
+    paddingLeft: '12px',
+    letterSpacing: '0.02em',
   };
 
   if (!isAuthenticated || !user) return null;
@@ -62,10 +65,10 @@ const DashboardPage: FC = () => {
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
       <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px' }}>
         <div>
-          <h1 style={{ fontSize: '1.8rem', color: '#1E293B' }}>
+          <h1 style={{ fontSize: '1.8rem', color: '#1B3A6B' }}>
             {getGreeting()}, {user.name}! 🌿
           </h1>
-          <p style={{ color: '#64748B', marginTop: '6px' }}>
+          <p style={{ color: '#8B7355', marginTop: '6px' }}>
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
         </div>
@@ -87,7 +90,7 @@ const DashboardPage: FC = () => {
 
       {showQuestionnaire && (
         <div style={{ marginBottom: '32px' }}>
-          <h2 style={{ color: '#7C3AED', marginBottom: '16px' }}>Welcome! Let's personalize your experience 🌸</h2>
+          <h2 style={{ color: '#C8970A', marginBottom: '16px' }}>Welcome! Let's personalize your journey ☥</h2>
           <QuestionnaireForm onComplete={handleQuestionnaireComplete} />
         </div>
       )}
@@ -95,7 +98,7 @@ const DashboardPage: FC = () => {
       {!showQuestionnaire && dailyGuide && (
         <>
           {/* Progress */}
-          <div style={{ ...sectionStyle, background: '#fff', padding: '20px', borderRadius: '14px', boxShadow: '0 4px 16px rgba(0,0,0,0.06)', border: '1px solid #E2E8F0' }}>
+          <div style={{ ...sectionStyle, background: 'linear-gradient(160deg, #FDF6E3 0%, #F5E6C8 100%)', padding: '20px', borderRadius: '14px', boxShadow: '0 4px 20px rgba(200,151,10,0.12)', border: '1px solid #D4B896' }}>
             <ProgressBar
               value={progressPercent}
               label={`Daily Progress · ${completedCount} of ${totalActivities} activities`}
@@ -105,31 +108,31 @@ const DashboardPage: FC = () => {
 
           {/* Mood Check-in */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>💜 Mood Check-In</h2>
+            <h2 style={sectionTitleStyle}>☥ Mood Check-In</h2>
             <MoodTracker />
           </div>
 
           {/* Daily Affirmations */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>✨ Daily Affirmations</h2>
+            <h2 style={sectionTitleStyle}>𓅃 Daily Affirmations</h2>
             <AffirmationCard affirmations={dailyGuide.affirmations} />
           </div>
 
           {/* Meditation */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🧘 Today's Meditation</h2>
+            <h2 style={sectionTitleStyle}>𓂀 Today's Meditation</h2>
             <MeditationCard meditation={dailyGuide.meditation} />
           </div>
 
           {/* Breathing */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🌬️ Breathing Exercise</h2>
+            <h2 style={sectionTitleStyle}>☥ Breathing Exercise</h2>
             <BreathingExercise exercise={dailyGuide.breathingExercise} />
           </div>
 
           {/* Meals */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🥗 Today's Meals</h2>
+            <h2 style={sectionTitleStyle}>𓃒 Today's Meals</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
               <MealCard meal={dailyGuide.meals.breakfast} />
               <MealCard meal={dailyGuide.meals.lunch} />
@@ -146,7 +149,7 @@ const DashboardPage: FC = () => {
 
           {/* Grieving Support */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🕊️ Grieving Support</h2>
+            <h2 style={sectionTitleStyle}>☥ Grieving Support</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
               {grievingSessions.map((session) => (
                 <GrievingSupport key={session.id} session={session} />

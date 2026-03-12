@@ -51,4 +51,24 @@ export const grievingSessions: GrievingSession[] = [
       'Acceptance does not mean that everything is okay. It means acknowledging what is real. Take a breath and say gently to yourself: this happened, and I am still here. With each exhale, release the fight against reality. With each inhale, welcome the present moment as it is. You have survived difficult moments before, and you carry a quiet strength within you.',
     musicTone: 'calm',
   },
+  {
+    id: 'g5',
+    title: 'The River of Remembrance',
+    description: 'A compassionate journey to honor those you have lost and the love that remains within you, guided by the imagery of the sacred Nile.',
+    duration: 12,
+    type: 'reflection',
+    guidedScript:
+      'Imagine yourself sitting at the edge of a gentle river at twilight. The water carries your memories downstream — beautiful, tender, irreplaceable. You do not need to hold on tightly; the love you shared lives inside you, as the river carries the light of the stars. Breathe in softly through your nose and breathe out through your mouth. Let each breath be an act of love for yourself. You are worthy of care, of rest, of peace. The river flows on, and so do you — gently, bravely, and not alone.',
+    musicTone: 'healing',
+  },
+  {
+    id: 'g6',
+    title: 'Wings of Healing',
+    description: 'Inspired by the wings of Isis, embrace the ancient truth that grief and love are the same breath — and that healing is always possible.',
+    duration: 10,
+    type: 'healing',
+    guidedScript:
+      'Close your eyes and breathe gently — inhale through your nose, exhale through your mouth. Imagine wings of golden light wrapping around you, warm and encompassing. This is the embrace of something larger than your pain. Grief is not weakness; it is the measure of how deeply you have loved. Breathe in the knowing that healing does not mean forgetting — it means learning to carry love with open hands. With each breath, the golden warmth softens your sorrow. You are held. You are healing. You are whole.',
+    musicTone: 'comfort',
+  },
 ];

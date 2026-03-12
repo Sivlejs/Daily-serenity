@@ -82,4 +82,34 @@ export const meditations: Meditation[] = [
       'Acknowledge any stress or tension you are carrying right now. It is okay to feel this way. Breathe in slowly for four counts, hold gently for four counts, and breathe out for four counts. With each cycle, imagine the tension dissolving like fog in sunlight. You are safe. You are capable. This moment of calm is yours.',
     musicTone: 'calm',
   },
+  {
+    id: 'med8',
+    title: 'Ancient Stillness',
+    description: 'Draw upon the timeless wisdom of the ancients. Sink into a stillness as deep as stone, as enduring as the desert sands.',
+    duration: 10,
+    category: 'morning',
+    guidedScript:
+      'Settle into your seat and close your eyes. Imagine you are seated at the edge of the great Nile as dawn breaks — the golden light of Ra touches the water and warms your face. With each breath, breathe in the ancient stillness of this sacred place. Let the wisdom of centuries flow through you. You carry the light of the sun within your heart. Rest here in timeless peace.',
+    musicTone: 'healing',
+  },
+  {
+    id: 'med9',
+    title: 'Inner Sanctuary',
+    description: 'Discover the temple within yourself — a sacred space of peace, clarity, and divine connection.',
+    duration: 8,
+    category: 'focus',
+    guidedScript:
+      'Close your eyes and breathe deeply. Visualize a golden door opening before you. Behind it lies your inner sanctuary — a space adorned with the colors of lapis lazuli and gold, lit by the soft glow of oil lamps. Step inside. Feel the serenity of this place. Here you are whole. Here you are wise. Breathe slowly and let this sanctuary anchor you through the hours ahead.',
+    musicTone: 'focus',
+  },
+  {
+    id: 'med10',
+    title: 'Starlit Surrender',
+    description: 'Release the weight of the world under the eternal night sky. A deep surrender into restorative sleep.',
+    duration: 15,
+    category: 'sleep',
+    guidedScript:
+      'Lie back and let the earth support every inch of your body. Above you, imagine the Egyptian night sky — a vast canopy of stars that have witnessed a thousand generations rest. You are held by the same earth, the same sky. Release every thought like a leaf carried downstream. Your body grows heavy and warm. The stars watch over you. Surrender gently into peaceful, healing sleep.',
+    musicTone: 'sleep',
+  },
 ];

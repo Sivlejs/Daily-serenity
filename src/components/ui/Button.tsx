@@ -24,10 +24,10 @@ const baseStyle: CSSProperties = {
 };
 
 const variantStyles: Record<string, CSSProperties> = {
-  primary: { background: '#7C3AED', color: '#fff' },
-  secondary: { background: '#0D9488', color: '#fff' },
-  outline: { background: 'transparent', color: '#7C3AED', border: '2px solid #7C3AED' },
-  ghost: { background: 'transparent', color: '#7C3AED' },
+  primary: { background: '#C8970A', color: '#0F1A2E' },
+  secondary: { background: '#1B3A6B', color: '#E8B84B' },
+  outline: { background: 'transparent', color: '#C8970A', border: '2px solid #C8970A' },
+  ghost: { background: 'transparent', color: '#C8970A' },
 };
 
 const sizeStyles: Record<string, CSSProperties> = {

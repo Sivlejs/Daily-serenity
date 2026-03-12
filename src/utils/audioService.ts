@@ -9,7 +9,7 @@ export function speak(text: string, onEnd?: () => void): void {
   if (!('speechSynthesis' in window)) return;
   stopSpeech();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = 0.9;
+  utterance.rate = 0.75;
   utterance.pitch = 1.0;
   utterance.volume = 1.0;
   if (onEnd) utterance.onend = onEnd;
@@ -42,11 +42,13 @@ const toneFrequencies: Record<MusicTone, number> = {
 };
 
 export function startTone(tone: MusicTone, volume = 0.08): void {
+  // Use an even softer volume for the comfort/grieving tone
+  const effectiveVolume = tone === 'comfort' ? Math.min(volume, 0.05) : volume;
   stopTone();
   try {
     audioCtx = new AudioContext();
     gainNode = audioCtx.createGain();
-    gainNode.gain.value = volume;
+    gainNode.gain.value = effectiveVolume;
     oscillator = audioCtx.createOscillator();
     oscillator.type = 'sine';
     oscillator.frequency.value = toneFrequencies[tone];

@@ -1,19 +1,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --primary: #7C3AED;
-  --primary-light: #A78BFA;
-  --secondary: #0D9488;
-  --secondary-light: #2DD4BF;
-  --background: #F0F9FF;
-  --surface: #FFFFFF;
-  --text: #1E293B;
-  --text-light: #64748B;
-  --accent: #86EFAC;
-  --error: #EF4444;
-  --warning: #F59E0B;
-  --border: #E2E8F0;
-  --shadow: rgba(0, 0, 0, 0.08);
+  /* Kemetic-inspired palette: gold, lapis lazuli, papyrus, earthy tones */
+  --primary: #C8970A;        /* Kemetic gold */
+  --primary-light: #E8B84B;  /* light gold */
+  --secondary: #1B3A6B;      /* lapis lazuli deep blue */
+  --secondary-light: #2E5BA8;/* medium lapis blue */
+  --background: #F5E6C8;     /* papyrus sand */
+  --surface: #FDF6E3;        /* light papyrus */
+  --text: #1A1A0E;           /* deep dark ink */
+  --text-light: #5C4A2A;     /* warm brown */
+  --accent: #7B2D2D;         /* earthy terracotta red */
+  --error: #C41E3A;
+  --warning: #E8A800;
+  --border: #D4B896;         /* sand border */
+  --shadow: rgba(0, 0, 0, 0.12);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
