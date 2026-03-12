@@ -26,13 +26,16 @@ export function getTodaysMeals(mealList: MealSuggestion[]): {
   breakfast: MealSuggestion;
   lunch: MealSuggestion;
   dinner: MealSuggestion;
+  snack: MealSuggestion;
 } {
   const breakfasts = mealList.filter((m) => m.category === 'breakfast');
   const lunches = mealList.filter((m) => m.category === 'lunch');
   const dinners = mealList.filter((m) => m.category === 'dinner');
+  const snacks = mealList.filter((m) => m.category === 'snack');
   return {
     breakfast: breakfasts[getDailyIndex(breakfasts.length)],
     lunch: lunches[getDailyIndex(lunches.length)],
     dinner: dinners[getDailyIndex(dinners.length)],
+    snack: snacks[getDailyIndex(snacks.length)],
   };
 }

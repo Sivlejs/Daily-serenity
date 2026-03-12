@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { getDailyIndex } from '../../utils/scheduler';
+import { getDailyIndex, getTodaysMeals } from '../../utils/scheduler';
+import { meals } from '../../data/meals';
 
 describe('scheduler utils', () => {
   it('getDailyIndex returns the same value for the same call', () => {
@@ -21,5 +22,19 @@ describe('scheduler utils', () => {
 
   it('getDailyIndex returns 0 for empty array', () => {
     expect(getDailyIndex(0)).toBe(0);
+  });
+
+  it('getTodaysMeals includes a snack', () => {
+    const plan = getTodaysMeals(meals);
+    expect(plan.snack).toBeDefined();
+    expect(plan.snack.category).toBe('snack');
+  });
+
+  it('getTodaysMeals returns all four meal categories', () => {
+    const plan = getTodaysMeals(meals);
+    expect(plan.breakfast.category).toBe('breakfast');
+    expect(plan.lunch.category).toBe('lunch');
+    expect(plan.dinner.category).toBe('dinner');
+    expect(plan.snack.category).toBe('snack');
   });
 });

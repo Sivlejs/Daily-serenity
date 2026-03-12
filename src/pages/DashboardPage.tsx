@@ -7,11 +7,13 @@ import QuestionnaireForm from '../components/features/QuestionnaireForm';
 import MeditationCard from '../components/features/MeditationCard';
 import BreathingExercise from '../components/features/BreathingExercise';
 import MealCard from '../components/features/MealCard';
+import MoodTracker from '../components/features/MoodTracker';
+import JournalEntry from '../components/features/JournalEntry';
 import ProgressBar from '../components/ui/ProgressBar';
 
 const DashboardPage: FC = () => {
   const { user, isAuthenticated, updateUser } = useAuth();
-  const { dailyGuide } = useApp();
+  const { dailyGuide, streak } = useApp();
   const navigate = useNavigate();
 
   const [questionnaireCompleted, setQuestionnaireCompleted] = useState(false);
@@ -55,13 +57,29 @@ const DashboardPage: FC = () => {
 
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
-      <div style={{ marginBottom: '32px' }}>
-        <h1 style={{ fontSize: '1.8rem', color: '#1E293B' }}>
-          {getGreeting()}, {user.name}! 🌿
-        </h1>
-        <p style={{ color: '#64748B', marginTop: '6px' }}>
-          {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-        </p>
+      <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px' }}>
+        <div>
+          <h1 style={{ fontSize: '1.8rem', color: '#1E293B' }}>
+            {getGreeting()}, {user.name}! 🌿
+          </h1>
+          <p style={{ color: '#64748B', marginTop: '6px' }}>
+            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+          </p>
+        </div>
+        {streak > 0 && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            background: 'linear-gradient(135deg, #F59E0B20, #EF444420)',
+            border: '1.5px solid #F59E0B',
+            borderRadius: '12px', padding: '8px 16px',
+          }}>
+            <span style={{ fontSize: '1.4rem' }}>🔥</span>
+            <div>
+              <p style={{ fontWeight: 700, color: '#92400E', fontSize: '1.1rem', lineHeight: 1 }}>{streak}</p>
+              <p style={{ fontSize: '0.72rem', color: '#B45309' }}>day streak</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {showQuestionnaire && (
@@ -82,6 +100,12 @@ const DashboardPage: FC = () => {
             />
           </div>
 
+          {/* Mood Check-in */}
+          <div style={sectionStyle}>
+            <h2 style={sectionTitleStyle}>💜 Mood Check-In</h2>
+            <MoodTracker />
+          </div>
+
           {/* Meditation */}
           <div style={sectionStyle}>
             <h2 style={sectionTitleStyle}>🧘 Today's Meditation</h2>
@@ -97,11 +121,18 @@ const DashboardPage: FC = () => {
           {/* Meals */}
           <div style={sectionStyle}>
             <h2 style={sectionTitleStyle}>🥗 Today's Meals</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
               <MealCard meal={dailyGuide.meals.breakfast} />
               <MealCard meal={dailyGuide.meals.lunch} />
               <MealCard meal={dailyGuide.meals.dinner} />
+              <MealCard meal={dailyGuide.meals.snack} />
             </div>
+          </div>
+
+          {/* Daily Journal */}
+          <div style={sectionStyle}>
+            <h2 style={sectionTitleStyle}>📝 Daily Journal</h2>
+            <JournalEntry />
           </div>
         </>
       )}
