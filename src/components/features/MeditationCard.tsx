@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
 import type { Meditation } from '../../data/meditations';
 import { useApp } from '../../contexts/AppContext';
+import { speak, stopSpeech, startTone, stopTone, isSpeechSupported, isAudioContextSupported } from '../../utils/audioService';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 
@@ -23,6 +24,8 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
   const totalSeconds = meditation.duration * 60;
   const [isRunning, setIsRunning] = useState(false);
   const [timeLeft, setTimeLeft] = useState(totalSeconds);
+  const [narrationOn, setNarrationOn] = useState(true);
+  const [musicOn, setMusicOn] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const markRef = useRef(markActivityComplete);
 
@@ -37,6 +40,8 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
         if (prev <= 1) {
           if (timerRef.current) clearInterval(timerRef.current);
           setIsRunning(false);
+          stopSpeech();
+          stopTone();
           markRef.current(meditation.id);
           return 0;
         }
@@ -48,10 +53,43 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
     };
   }, [isRunning, meditation.id]);
 
+  const handleStart = () => {
+    setIsRunning(true);
+    if (musicOn) startTone(meditation.musicTone);
+    if (narrationOn) speak(meditation.guidedScript);
+  };
+
   const handleStop = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     setIsRunning(false);
     setTimeLeft(totalSeconds);
+    stopSpeech();
+    stopTone();
+  };
+
+  const toggleNarration = () => {
+    const next = !narrationOn;
+    setNarrationOn(next);
+    if (isRunning) {
+      if (next) {
+        // Web Speech API has no resume – restart from beginning when re-enabled
+        speak(meditation.guidedScript);
+      } else {
+        stopSpeech();
+      }
+    }
+  };
+
+  const toggleMusic = () => {
+    const next = !musicOn;
+    setMusicOn(next);
+    if (isRunning) {
+      if (next) {
+        startTone(meditation.musicTone);
+      } else {
+        stopTone();
+      }
+    }
   };
 
   const minutes = Math.floor(timeLeft / 60);
@@ -75,6 +113,46 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
         </div>
       ) : (
         <>
+          {/* Audio toggle controls */}
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
+            {isSpeechSupported() && (
+              <button
+                onClick={toggleNarration}
+                aria-pressed={narrationOn}
+                style={{
+                  fontSize: '0.78rem',
+                  padding: '4px 10px',
+                  borderRadius: '999px',
+                  border: `1.5px solid ${narrationOn ? '#7C3AED' : '#CBD5E1'}`,
+                  background: narrationOn ? '#7C3AED15' : 'transparent',
+                  color: narrationOn ? '#7C3AED' : '#94A3B8',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                }}
+              >
+                🎙 Narration {narrationOn ? 'On' : 'Off'}
+              </button>
+            )}
+            {isAudioContextSupported() && (
+              <button
+                onClick={toggleMusic}
+                aria-pressed={musicOn}
+                style={{
+                  fontSize: '0.78rem',
+                  padding: '4px 10px',
+                  borderRadius: '999px',
+                  border: `1.5px solid ${musicOn ? '#0D9488' : '#CBD5E1'}`,
+                  background: musicOn ? '#0D948815' : 'transparent',
+                  color: musicOn ? '#0D9488' : '#94A3B8',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                }}
+              >
+                🎵 Music {musicOn ? 'On' : 'Off'}
+              </button>
+            )}
+          </div>
+
           {/* Timer display */}
           <div style={{ textAlign: 'center', marginBottom: '16px' }}>
             <div style={{
@@ -106,7 +184,7 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
               <Button variant="outline" onClick={handleStop} fullWidth>Stop</Button>
             ) : (
               <>
-                <Button variant="primary" onClick={() => setIsRunning(true)} fullWidth>
+                <Button variant="primary" onClick={handleStart} fullWidth>
                   {timeLeft < totalSeconds ? 'Resume' : 'Start Meditation'}
                 </Button>
                 <Button variant="ghost" onClick={() => markActivityComplete(meditation.id)}>

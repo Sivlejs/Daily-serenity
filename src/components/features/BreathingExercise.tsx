@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
 import type { BreathingExercise as BreathingExerciseType } from '../../data/breathing';
 import { useApp } from '../../contexts/AppContext';
+import { speak, stopSpeech, isSpeechSupported } from '../../utils/audioService';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 
@@ -46,12 +47,14 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
   const [phase, setPhase] = useState<Phase>('idle');
   const [timeLeft, setTimeLeft] = useState(0);
   const [cyclesDone, setCyclesDone] = useState(0);
+  const [voiceOn, setVoiceOn] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const phaseRef = useRef<Phase>('idle');
   const timeRef = useRef(0);
   const cyclesRef = useRef(0);
   const exerciseRef = useRef(exercise);
   const markCompleteRef = useRef(markActivityComplete);
+  const voiceOnRef = useRef(voiceOn);
 
   useEffect(() => {
     exerciseRef.current = exercise;
@@ -61,6 +64,17 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
     markCompleteRef.current = markActivityComplete;
   }, [markActivityComplete]);
 
+  useEffect(() => {
+    voiceOnRef.current = voiceOn;
+  }, [voiceOn]);
+
+  const announcePhase = (p: Phase) => {
+    if (!voiceOnRef.current || !isSpeechSupported()) return;
+    const ex = exerciseRef.current;
+    const prompt = p === 'inhale' ? ex.prompts.inhale : p === 'hold' ? ex.prompts.hold : ex.prompts.exhale;
+    speak(prompt);
+  };
+
   const stop = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     setIsRunning(false);
@@ -69,6 +83,7 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
     setCyclesDone(0);
     phaseRef.current = 'idle';
     cyclesRef.current = 0;
+    stopSpeech();
   };
 
   const start = () => {
@@ -79,6 +94,7 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
     setTimeLeft(exercise.inhale);
     setCyclesDone(0);
     setIsRunning(true);
+    announcePhase('inhale');
   };
 
   useEffect(() => {
@@ -100,6 +116,7 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
             setPhase('idle');
             setTimeLeft(0);
             cyclesRef.current = 0;
+            stopSpeech();
             markCompleteRef.current(ex.id);
             return;
           }
@@ -108,6 +125,7 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
         timeRef.current = getPhaseDuration(next, ex.inhale, ex.hold, ex.exhale);
         setPhase(next);
         setTimeLeft(timeRef.current);
+        announcePhase(next);
       }
     }, 1000);
 
@@ -115,6 +133,12 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, [isRunning]);
+
+  const toggleVoice = () => {
+    const next = !voiceOn;
+    setVoiceOn(next);
+    if (!next) stopSpeech();
+  };
 
   const circleSize = 120;
 
@@ -125,9 +149,31 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
         {completed && <span style={{ color: '#0D9488', fontWeight: 600 }}>✓ Done</span>}
       </div>
       <p style={{ color: '#64748B', fontSize: '0.9rem', marginBottom: '8px' }}>{exercise.description}</p>
-      <p style={{ color: '#7C3AED', fontSize: '0.85rem', fontWeight: 500, marginBottom: '20px' }}>
+      <p style={{ color: '#7C3AED', fontSize: '0.85rem', fontWeight: 500, marginBottom: '16px' }}>
         💡 {exercise.benefit}
       </p>
+
+      {/* Voice toggle */}
+      {isSpeechSupported() && !completed && (
+        <div style={{ marginBottom: '16px' }}>
+          <button
+            onClick={toggleVoice}
+            aria-pressed={voiceOn}
+            style={{
+              fontSize: '0.78rem',
+              padding: '4px 10px',
+              borderRadius: '999px',
+              border: `1.5px solid ${voiceOn ? '#7C3AED' : '#CBD5E1'}`,
+              background: voiceOn ? '#7C3AED15' : 'transparent',
+              color: voiceOn ? '#7C3AED' : '#94A3B8',
+              cursor: 'pointer',
+              fontWeight: 600,
+            }}
+          >
+            🎙 Voice {voiceOn ? 'On' : 'Off'}
+          </button>
+        </div>
+      )}
 
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
         <div style={{

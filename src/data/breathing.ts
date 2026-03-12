@@ -1,3 +1,9 @@
+export interface BreathingPrompts {
+  inhale: string;
+  hold: string;
+  exhale: string;
+}
+
 export interface BreathingExercise {
   id: string;
   name: string;
@@ -7,6 +13,7 @@ export interface BreathingExercise {
   exhale: number;
   cycles: number;
   benefit: string;
+  prompts: BreathingPrompts;
 }
 
 export const breathingExercises: BreathingExercise[] = [
@@ -19,6 +26,11 @@ export const breathingExercises: BreathingExercise[] = [
     exhale: 4,
     cycles: 4,
     benefit: 'Reduces stress and improves focus',
+    prompts: {
+      inhale: 'Breathe in slowly',
+      hold: 'Hold your breath',
+      exhale: 'Breathe out slowly',
+    },
   },
   {
     id: 'b2',
@@ -29,6 +41,11 @@ export const breathingExercises: BreathingExercise[] = [
     exhale: 8,
     cycles: 4,
     benefit: 'Promotes relaxation and better sleep',
+    prompts: {
+      inhale: 'Breathe in through your nose',
+      hold: 'Hold gently',
+      exhale: 'Breathe out through your mouth',
+    },
   },
   {
     id: 'b3',
@@ -39,6 +56,11 @@ export const breathingExercises: BreathingExercise[] = [
     exhale: 5,
     cycles: 6,
     benefit: 'Activates the parasympathetic nervous system',
+    prompts: {
+      inhale: 'Breathe deep into your belly',
+      hold: 'Pause at the top',
+      exhale: 'Release fully and slowly',
+    },
   },
   {
     id: 'b4',
@@ -49,5 +71,10 @@ export const breathingExercises: BreathingExercise[] = [
     exhale: 6,
     cycles: 5,
     benefit: 'Increases energy and mental clarity',
+    prompts: {
+      inhale: 'Sharp inhale through the nose',
+      hold: 'Brief pause',
+      exhale: 'Long exhale through the mouth',
+    },
   },
 ];

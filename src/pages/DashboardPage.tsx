@@ -6,11 +6,13 @@ import { useApp } from '../contexts/AppContext';
 import QuestionnaireForm from '../components/features/QuestionnaireForm';
 import MeditationCard from '../components/features/MeditationCard';
 import BreathingExercise from '../components/features/BreathingExercise';
+import GrievingSupport from '../components/features/GrievingSupport';
 import MealCard from '../components/features/MealCard';
 import MoodTracker from '../components/features/MoodTracker';
 import JournalEntry from '../components/features/JournalEntry';
 import AffirmationCard from '../components/features/AffirmationCard';
 import ProgressBar from '../components/ui/ProgressBar';
+import { grievingSessions } from '../data/grieving';
 
 const DashboardPage: FC = () => {
   const { user, isAuthenticated, updateUser } = useAuth();
@@ -140,6 +142,16 @@ const DashboardPage: FC = () => {
           <div style={sectionStyle}>
             <h2 style={sectionTitleStyle}>📝 Daily Journal</h2>
             <JournalEntry />
+          </div>
+
+          {/* Grieving Support */}
+          <div style={sectionStyle}>
+            <h2 style={sectionTitleStyle}>🕊️ Grieving Support</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+              {grievingSessions.map((session) => (
+                <GrievingSupport key={session.id} session={session} />
+              ))}
+            </div>
           </div>
         </>
       )}
