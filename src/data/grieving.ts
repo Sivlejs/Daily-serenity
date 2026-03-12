@@ -53,7 +53,7 @@ export const grievingSessions: GrievingSession[] = [
   },
   {
     id: 'g5',
-    title: 'Honouring the Bond',
+    title: 'Honoring the Bond',
     description: 'A compassionate space to celebrate the love that connected you, and acknowledge how it lives on within you.',
     duration: 9,
     type: 'reflection',

@@ -22,10 +22,10 @@ const Footer: FC = () => {
         </strong>
       </div>
       <p style={{ fontSize: '0.82rem', letterSpacing: '0.04em' }}>Your companion for mindfulness, balance, and eternal well-being.</p>
-      <div style={{ fontSize: '0.75rem', marginTop: '0.75rem', color: '#6B8A5E', letterSpacing: '0.1em' }}>
+      <div style={{ fontSize: '0.75rem', marginTop: '0.75rem', color: '#A0906A', letterSpacing: '0.1em' }}>
         ✦ PEACE · HARMONY · BALANCE · MA'AT ✦
       </div>
-      <p style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: '#6B7A8A' }}>
+      <p style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: '#7A8FA0' }}>
         © {new Date().getFullYear()} Daily Serenity. All rights reserved.
       </p>
     </footer>
