@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { getDailyIndex, getTodaysMeals } from '../../utils/scheduler';
+import { getDailyIndex, getTodaysMeals, getTodaysAffirmations } from '../../utils/scheduler';
 import { meals } from '../../data/meals';
+import { affirmations } from '../../data/affirmations';
 
 describe('scheduler utils', () => {
   it('getDailyIndex returns the same value for the same call', () => {
@@ -36,5 +37,19 @@ describe('scheduler utils', () => {
     expect(plan.lunch.category).toBe('lunch');
     expect(plan.dinner.category).toBe('dinner');
     expect(plan.snack.category).toBe('snack');
+  });
+
+  it('getTodaysAffirmations returns the requested count', () => {
+    const result = getTodaysAffirmations(affirmations, 3);
+    expect(result).toHaveLength(3);
+  });
+
+  it('getTodaysAffirmations returns valid affirmation objects', () => {
+    const result = getTodaysAffirmations(affirmations, 2);
+    result.forEach((aff) => {
+      expect(aff).toHaveProperty('id');
+      expect(aff).toHaveProperty('text');
+      expect(aff).toHaveProperty('category');
+    });
   });
 });

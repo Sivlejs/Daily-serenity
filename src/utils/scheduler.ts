@@ -1,6 +1,7 @@
 import type { Meditation } from '../data/meditations';
 import type { BreathingExercise } from '../data/breathing';
 import type { MealSuggestion } from '../data/meals';
+import type { Affirmation } from '../data/affirmations';
 
 const MS_PER_DAY = 86_400_000;
 
@@ -38,4 +39,17 @@ export function getTodaysMeals(mealList: MealSuggestion[]): {
     dinner: dinners[getDailyIndex(dinners.length)],
     snack: snacks[getDailyIndex(snacks.length)],
   };
+}
+
+export function getTodaysAffirmations(
+  affirmations: Affirmation[],
+  count: number = 3,
+): Affirmation[] {
+  const baseIndex = getDailyIndex(affirmations.length);
+  const result: Affirmation[] = [];
+  for (let i = 0; i < count; i++) {
+    const index = (baseIndex + i) % affirmations.length;
+    result.push(affirmations[index]);
+  }
+  return result;
 }
