@@ -52,6 +52,7 @@ import {
   startTone,
   stopTone,
   isAudioContextSupported,
+  speakGrieving,
 } from '../../utils/audioService';
 
 describe('audioService', () => {
@@ -85,9 +86,38 @@ describe('audioService', () => {
       expect(utterance.text).toBe('Hello world');
     });
 
+    it('uses a slower, calmer rate (0.75)', () => {
+      speak('Slow and calm');
+      const utterance = mockSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+      expect(utterance.rate).toBe(0.75);
+    });
+
     it('attaches onEnd callback when provided', () => {
       const onEnd = vi.fn();
       speak('Test', onEnd);
+      const utterance = mockSpeak.mock.calls[0][0] as SpeechSynthesisUtterance;
+      expect(utterance.onend).toBe(onEnd);
+    });
+  });
+
+  describe('speakGrieving', () => {
+    it('calls speechSynthesis.cancel then speak', () => {
+      speakGrieving('Gentle words');
+      expect(mockCancel).toHaveBeenCalledTimes(1);
+      expect(mockSpeak).toHaveBeenCalledTimes(1);
+      const utterance = mockSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+      expect(utterance.text).toBe('Gentle words');
+    });
+
+    it('uses an even slower, softer rate (0.65) for grieving', () => {
+      speakGrieving('Tender and soft');
+      const utterance = mockSpeak.mock.calls[0][0] as MockSpeechSynthesisUtterance;
+      expect(utterance.rate).toBe(0.65);
+    });
+
+    it('attaches onEnd callback when provided', () => {
+      const onEnd = vi.fn();
+      speakGrieving('Test', onEnd);
       const utterance = mockSpeak.mock.calls[0][0] as SpeechSynthesisUtterance;
       expect(utterance.onend).toBe(onEnd);
     });

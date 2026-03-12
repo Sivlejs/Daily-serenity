@@ -82,4 +82,44 @@ export const meditations: Meditation[] = [
       'Acknowledge any stress or tension you are carrying right now. It is okay to feel this way. Breathe in slowly for four counts, hold gently for four counts, and breathe out for four counts. With each cycle, imagine the tension dissolving like fog in sunlight. You are safe. You are capable. This moment of calm is yours.',
     musicTone: 'calm',
   },
+  {
+    id: 'med8',
+    title: 'Ancient Stillness',
+    description: 'Tap into the timeless wisdom of the ancients. Sit in sacred silence and connect with the eternal now.',
+    duration: 10,
+    category: 'morning',
+    guidedScript:
+      'Imagine you are seated beside the great Nile at dawn. The air is cool, the water glistening gold with the first light of Ra. Feel the earth beneath you — solid, ancient, wise. With each breath, draw in the wisdom of countless generations who sat in stillness before you. You are part of something timeless. Breathe in eternity. Breathe out all urgency.',
+    musicTone: 'healing',
+  },
+  {
+    id: 'med9',
+    title: 'Inner Sanctuary',
+    description: 'Create a sacred inner space to retreat to at any moment. A temple of peace within.',
+    duration: 12,
+    category: 'focus',
+    guidedScript:
+      'Close your eyes and picture a golden doorway. Step through it into your inner sanctuary — a chamber adorned with lapis and gold, lit by warm torchlight. This is your sacred space. Nothing harmful can enter here. Feel the serenity of this place fill your chest with every breath. Know that you can return here any time you need refuge or clarity.',
+    musicTone: 'calm',
+  },
+  {
+    id: 'med10',
+    title: 'Star Gazing',
+    description: 'Connect with the vast cosmos and rediscover your place in the universe.',
+    duration: 8,
+    category: 'evening',
+    guidedScript:
+      'Lie back and let the stars above you become the ceiling of the universe. Like the ancient astronomers of Kemet, gaze upward and feel the infinite sky stretching beyond your imagination. You are made of the same light that fills those stars. Let any worries dissolve into the vastness. You are small, yet perfectly held in the arms of the cosmos.',
+    musicTone: 'sleep',
+  },
+  {
+    id: 'med11',
+    title: 'Desert Sunrise',
+    description: 'Welcome a fresh start with the rise of Ra — an energising morning ritual inspired by Kemetic tradition.',
+    duration: 7,
+    category: 'morning',
+    guidedScript:
+      'As the sun rises over golden dunes, feel its warmth touch your face. Ra, the source of all life, offers his light to you freely. Breathe in that golden warmth — it fills your lungs, your belly, your fingertips. Today is a new creation. You arise renewed, radiant, and purposeful. Carry this morning light throughout your day.',
+    musicTone: 'focus',
+  },
 ];

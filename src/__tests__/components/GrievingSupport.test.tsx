@@ -4,7 +4,7 @@ import GrievingSupport from '../../components/features/GrievingSupport';
 import type { GrievingSession } from '../../data/grieving';
 
 vi.mock('../../utils/audioService', () => ({
-  speak: vi.fn(),
+  speakGrieving: vi.fn(),
   stopSpeech: vi.fn(),
   startTone: vi.fn(),
   stopTone: vi.fn(),

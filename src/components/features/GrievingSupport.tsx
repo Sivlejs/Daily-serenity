@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FC } from 'react';
 import type { GrievingSession } from '../../data/grieving';
-import { speak, stopSpeech, startTone, stopTone, isSpeechSupported, isAudioContextSupported } from '../../utils/audioService';
+import { speakGrieving, stopSpeech, startTone, stopTone, isSpeechSupported, isAudioContextSupported } from '../../utils/audioService';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 
@@ -10,17 +10,17 @@ interface GrievingSupportProps {
 }
 
 const typeColors: Record<GrievingSession['type'], string> = {
-  comfort: '#EC4899',
-  reflection: '#8B5CF6',
-  healing: '#0D9488',
-  acceptance: '#3B82F6',
+  comfort: '#B8860B',     /* Kemetic gold – warm, embracing */
+  reflection: '#1B3A6B',  /* deep lapis blue – contemplative depth */
+  healing: '#8B4513',     /* earthy sienna – grounded restoration */
+  acceptance: '#4A3060',  /* violet-night – peaceful release */
 };
 
 const typeEmoji: Record<GrievingSession['type'], string> = {
-  comfort: '🤗',
-  reflection: '🌿',
-  healing: '💛',
-  acceptance: '🕊️',
+  comfort: '☥',
+  reflection: '𓂀',
+  healing: '𓋹',
+  acceptance: '𓅃',
 };
 
 const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
@@ -34,7 +34,7 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
     setIsPlaying(true);
     if (musicOn) startTone(session.musicTone);
     if (narrationOn) {
-      speak(session.guidedScript, () => {
+      speakGrieving(session.guidedScript, () => {
         stopTone();
         setIsPlaying(false);
       });
@@ -53,7 +53,7 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
     if (isPlaying) {
       if (next) {
         // Web Speech API has no resume – restart from beginning when re-enabled
-        speak(session.guidedScript, () => {
+        speakGrieving(session.guidedScript, () => {
           stopTone();
           setIsPlaying(false);
         });
@@ -93,18 +93,19 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
         <span style={{ fontSize: '0.85rem', color: '#64748B' }}>⏱ {session.duration} min</span>
       </div>
 
-      <h3 style={{ color: '#1E293B', marginBottom: '8px' }}>{session.title}</h3>
-      <p style={{ color: '#64748B', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.6 }}>{session.description}</p>
+      <h3 style={{ color: '#1B3A6B', marginBottom: '8px', fontFamily: 'Georgia, serif' }}>{session.title}</h3>
+      <p style={{ color: '#7A5C2E', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.6 }}>{session.description}</p>
 
       {/* Script preview */}
       <blockquote style={{
         borderLeft: `3px solid ${color}`,
         paddingLeft: '12px',
         margin: '0 0 16px 0',
-        color: '#475569',
+        color: '#5C4020',
         fontSize: '0.88rem',
         fontStyle: 'italic',
         lineHeight: 1.7,
+        fontFamily: 'Georgia, serif',
       }}>
         {session.guidedScript.length > 160
           ? session.guidedScript.slice(0, 160) + '…'
@@ -121,11 +122,12 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
               fontSize: '0.78rem',
               padding: '4px 10px',
               borderRadius: '999px',
-              border: `1.5px solid ${narrationOn ? '#7C3AED' : '#CBD5E1'}`,
-              background: narrationOn ? '#7C3AED15' : 'transparent',
-              color: narrationOn ? '#7C3AED' : '#94A3B8',
+              border: `1.5px solid ${narrationOn ? '#B8860B' : '#D4B483'}`,
+              background: narrationOn ? '#B8860B15' : 'transparent',
+              color: narrationOn ? '#B8860B' : '#7A5C2E',
               cursor: 'pointer',
               fontWeight: 600,
+              fontFamily: 'Georgia, serif',
             }}
           >
             🎙 Narration {narrationOn ? 'On' : 'Off'}
@@ -139,11 +141,12 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
               fontSize: '0.78rem',
               padding: '4px 10px',
               borderRadius: '999px',
-              border: `1.5px solid ${musicOn ? '#0D9488' : '#CBD5E1'}`,
-              background: musicOn ? '#0D948815' : 'transparent',
-              color: musicOn ? '#0D9488' : '#94A3B8',
+              border: `1.5px solid ${musicOn ? '#1B3A6B' : '#D4B483'}`,
+              background: musicOn ? '#1B3A6B15' : 'transparent',
+              color: musicOn ? '#1B3A6B' : '#7A5C2E',
               cursor: 'pointer',
               fontWeight: 600,
+              fontFamily: 'Georgia, serif',
             }}
           >
             🎵 Music {musicOn ? 'On' : 'Off'}

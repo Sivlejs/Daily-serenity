@@ -50,22 +50,26 @@ const DashboardPage: FC = () => {
   };
 
   const sectionTitleStyle: CSSProperties = {
-    fontSize: '1.25rem',
+    fontSize: '1.2rem',
     fontWeight: 700,
-    color: '#1E293B',
+    color: '#1B3A6B',
     marginBottom: '16px',
+    fontFamily: 'Georgia, serif',
+    borderBottom: '2px solid #B8860B',
+    paddingBottom: '6px',
+    letterSpacing: '0.03em',
   };
 
   if (!isAuthenticated || !user) return null;
 
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem', fontFamily: 'Georgia, serif' }}>
       <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px' }}>
         <div>
-          <h1 style={{ fontSize: '1.8rem', color: '#1E293B' }}>
-            {getGreeting()}, {user.name}! 🌿
+          <h1 style={{ fontSize: '1.8rem', color: '#1B3A6B', fontFamily: 'Georgia, serif' }}>
+            {getGreeting()}, {user.name} ☥
           </h1>
-          <p style={{ color: '#64748B', marginTop: '6px' }}>
+          <p style={{ color: '#7A5C2E', marginTop: '6px', fontStyle: 'italic' }}>
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
         </div>
@@ -87,7 +91,7 @@ const DashboardPage: FC = () => {
 
       {showQuestionnaire && (
         <div style={{ marginBottom: '32px' }}>
-          <h2 style={{ color: '#7C3AED', marginBottom: '16px' }}>Welcome! Let's personalize your experience 🌸</h2>
+          <h2 style={{ color: '#B8860B', marginBottom: '16px', fontFamily: 'Georgia, serif' }}>Welcome, Seeker! Let us personalize your sacred journey ☥</h2>
           <QuestionnaireForm onComplete={handleQuestionnaireComplete} />
         </div>
       )}
@@ -105,31 +109,31 @@ const DashboardPage: FC = () => {
 
           {/* Mood Check-in */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>💜 Mood Check-In</h2>
+            <h2 style={sectionTitleStyle}>☥ Mood Check-In</h2>
             <MoodTracker />
           </div>
 
           {/* Daily Affirmations */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>✨ Daily Affirmations</h2>
+            <h2 style={sectionTitleStyle}>𓂀 Daily Affirmations</h2>
             <AffirmationCard affirmations={dailyGuide.affirmations} />
           </div>
 
           {/* Meditation */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🧘 Today's Meditation</h2>
+            <h2 style={sectionTitleStyle}>☥ Today's Sacred Meditation</h2>
             <MeditationCard meditation={dailyGuide.meditation} />
           </div>
 
           {/* Breathing */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🌬️ Breathing Exercise</h2>
+            <h2 style={sectionTitleStyle}>𓋹 Sacred Breathing Rite</h2>
             <BreathingExercise exercise={dailyGuide.breathingExercise} />
           </div>
 
           {/* Meals */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🥗 Today's Meals</h2>
+            <h2 style={sectionTitleStyle}>𓅃 Today's Nourishment</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
               <MealCard meal={dailyGuide.meals.breakfast} />
               <MealCard meal={dailyGuide.meals.lunch} />
@@ -140,13 +144,13 @@ const DashboardPage: FC = () => {
 
           {/* Daily Journal */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>📝 Daily Journal</h2>
+            <h2 style={sectionTitleStyle}>𓏛 Sacred Scrolls · Journal</h2>
             <JournalEntry />
           </div>
 
           {/* Grieving Support */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>🕊️ Grieving Support</h2>
+            <h2 style={sectionTitleStyle}>𓋹 Healing Path · Grief Support</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
               {grievingSessions.map((session) => (
                 <GrievingSupport key={session.id} session={session} />
