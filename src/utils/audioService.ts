@@ -11,7 +11,7 @@ export function speak(text: string, onEnd?: () => void): void {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 0.75;
   utterance.pitch = 0.9;
-  utterance.volume = 1.0;
+  utterance.volume = 0.9;
   if (onEnd) utterance.onend = onEnd;
   window.speechSynthesis.speak(utterance);
 }

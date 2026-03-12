@@ -53,32 +53,22 @@ export const grievingSessions: GrievingSession[] = [
   },
   {
     id: 'g5',
-    title: 'Letters to the Stars',
-    description: 'A compassionate session to help you express what was left unsaid through loving inner dialogue.',
-    duration: 12,
+    title: 'Honoring the Bond',
+    description: 'A compassionate space to celebrate the love that connected you, and acknowledge how it lives on within you.',
+    duration: 9,
     type: 'reflection',
     guidedScript:
-      'Imagine the one you grieve is a star — luminous and ever-present in the sky above you. Breathe gently and begin to compose a letter in your heart. What would you say if you knew they could hear you? Speak it now, silently or aloud. There is nothing that cannot be said in this sacred space. Let the words flow like a river to the sea. They are received. They are heard. They are felt.',
+      'The connection you shared was real, and love like that does not disappear — it transforms. Take a slow breath and bring to mind a moment when you felt most seen, most held, most yourself in the presence of what you have lost. Let yourself smile, or cry, or both. Your love was not wasted. It shaped you. It is still shaping you. That is not ending — that is legacy.',
     musicTone: 'comfort',
   },
   {
     id: 'g6',
-    title: 'The Eternal Bond',
-    description: 'Honour that love does not end with physical separation — it transforms and endures.',
-    duration: 10,
+    title: 'Returning to the River',
+    description: 'Like the Nile that nourishes the land each season, this meditation guides you toward renewal after loss.',
+    duration: 11,
     type: 'healing',
     guidedScript:
-      'Place both hands over your heart and breathe slowly. Know that love is the only force that transcends time. The bond between you and those you have loved cannot be severed by any loss. With each breath, affirm: the love is still here. The connection endures. Breathe in the warmth of that unbroken bond. You carry them with you — in your laughter, in your courage, in your kindness.',
+      'Imagine standing at the edge of a great river at dawn. The water is golden and ancient. This river has seen countless lives, countless loves, countless losses — and still it flows. Step into the shallows. Feel the cool water around your feet. With every gentle wave, let a little grief loosen and be carried downstream. You do not have to carry it all. The river is strong enough to hold it for you. Breathe. Remain. Slowly, the light grows warmer on your face.',
     musicTone: 'healing',
-  },
-  {
-    id: 'g7',
-    title: 'Rest in the River',
-    description: 'Release grief into the great flow of life, trusting that healing moves in its own perfect time.',
-    duration: 14,
-    type: 'acceptance',
-    guidedScript:
-      'Visualise a great, sacred river — the ancient Nile at dusk. See your grief as a burden you have carried faithfully for a long time. Now, gently, place it on the surface of the water. Watch as the river carries it onward. You do not forget. You do not abandon. You simply allow the flow of life to move through you. With each exhale, release a little more. With each inhale, receive a little more peace. You are held. You are loved. And healing is already underway.',
-    musicTone: 'calm',
   },
 ];
