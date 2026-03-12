@@ -17,10 +17,10 @@ const typeColors: Record<GrievingSession['type'], string> = {
 };
 
 const typeEmoji: Record<GrievingSession['type'], string> = {
-  comfort: '☥',
-  reflection: '𓂀',
-  healing: '𓋹',
-  acceptance: '𓅃',
+  comfort: '🤗',
+  reflection: '🌿',
+  healing: '💛',
+  acceptance: '🕊️',
 };
 
 const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
@@ -105,7 +105,6 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
         fontSize: '0.88rem',
         fontStyle: 'italic',
         lineHeight: 1.7,
-        fontFamily: 'Georgia, serif',
       }}>
         {session.guidedScript.length > 160
           ? session.guidedScript.slice(0, 160) + '…'
@@ -127,7 +126,6 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
               color: narrationOn ? '#A0783A' : '#9A8060',
               cursor: 'pointer',
               fontWeight: 600,
-              fontFamily: 'Georgia, serif',
             }}
           >
             🎙 Narration {narrationOn ? 'On' : 'Off'}
@@ -146,7 +144,6 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
               color: musicOn ? '#1A5E7A' : '#9A8060',
               cursor: 'pointer',
               fontWeight: 600,
-              fontFamily: 'Georgia, serif',
             }}
           >
             🎵 Music {musicOn ? 'On' : 'Off'}
