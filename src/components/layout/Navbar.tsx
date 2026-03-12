@@ -13,12 +13,12 @@ const Navbar: FC = () => {
   };
 
   const navStyle: import('react').CSSProperties = {
-    background: 'linear-gradient(90deg, #1B3A6B 0%, #2E5FA3 100%)',
-    borderBottom: '2px solid #B8860B',
+    background: 'linear-gradient(90deg, #1A3A4A 0%, #0F3D52 60%, #1A3A4A 100%)',
+    borderBottom: '2px solid #C9A84C',
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    boxShadow: '0 2px 12px rgba(27,58,107,0.25)',
+    boxShadow: '0 2px 12px rgba(0,0,0,0.25)',
   };
 
   const innerStyle: import('react').CSSProperties = {
@@ -32,22 +32,27 @@ const Navbar: FC = () => {
   };
 
   const linkStyle: import('react').CSSProperties = {
-    color: '#DAA520',
-    fontWeight: 600,
+    color: '#EDD9A3',
+    fontWeight: 500,
     textDecoration: 'none',
-    fontSize: '0.95rem',
-    letterSpacing: '0.03em',
-    transition: 'color 0.2s ease',
+    letterSpacing: '0.04em',
+    transition: 'color 0.2s',
   };
 
   return (
     <nav style={navStyle}>
       <div style={innerStyle}>
         <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '1.6rem', lineHeight: 1 }} aria-label="Ankh symbol">☥</span>
-          <span style={{ fontWeight: 700, fontSize: '1.2rem', color: '#DAA520', fontFamily: 'Georgia, serif', letterSpacing: '0.04em' }}>
-            Daily Serenity
-          </span>
+          {/* Ankh symbol */}
+          <span style={{ fontSize: '1.6rem', color: '#C9A84C', lineHeight: 1 }}>☥</span>
+          <div>
+            <span style={{ fontWeight: 700, fontSize: '1.2rem', color: '#C9A84C', letterSpacing: '0.06em', fontFamily: 'Georgia, serif' }}>
+              Daily Serenity
+            </span>
+            <div style={{ fontSize: '0.6rem', color: '#A0906A', letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1 }}>
+              ✦ Peace · Balance · Harmony ✦
+            </div>
+          </div>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
           <Link to="/" style={linkStyle}>Home</Link>
@@ -59,11 +64,11 @@ const Navbar: FC = () => {
           )}
           {isAuthenticated ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span style={{ color: 'rgba(218,165,32,0.6)', fontSize: '0.9rem' }}>☥ {user?.name}</span>
+              <span style={{ color: '#A0906A', fontSize: '0.9rem' }}>☥ {user?.name}</span>
               <Button variant="outline" size="sm" onClick={handleLogout}>Logout</Button>
             </div>
           ) : (
-            <Button variant="primary" size="sm" onClick={() => navigate('/auth')}>Enter the Temple</Button>
+            <Button variant="primary" size="sm" onClick={() => navigate('/auth')}>Login / Register</Button>
           )}
         </div>
       </div>

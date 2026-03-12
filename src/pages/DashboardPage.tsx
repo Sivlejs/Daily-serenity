@@ -52,12 +52,12 @@ const DashboardPage: FC = () => {
   const sectionTitleStyle: CSSProperties = {
     fontSize: '1.2rem',
     fontWeight: 700,
-    color: '#1B3A6B',
+    color: '#2C1810',
     marginBottom: '16px',
     fontFamily: 'Georgia, serif',
-    borderBottom: '2px solid #B8860B',
-    paddingBottom: '6px',
-    letterSpacing: '0.03em',
+    letterSpacing: '0.04em',
+    borderBottom: '1px solid #D4B896',
+    paddingBottom: '8px',
   };
 
   if (!isAuthenticated || !user) return null;
@@ -66,24 +66,24 @@ const DashboardPage: FC = () => {
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem 1.5rem', fontFamily: 'Georgia, serif' }}>
       <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px' }}>
         <div>
-          <h1 style={{ fontSize: '1.8rem', color: '#1B3A6B', fontFamily: 'Georgia, serif' }}>
+          <h1 style={{ fontSize: '1.8rem', color: '#2C1810', fontFamily: 'Georgia, serif', letterSpacing: '0.04em' }}>
             {getGreeting()}, {user.name} ☥
           </h1>
-          <p style={{ color: '#7A5C2E', marginTop: '6px', fontStyle: 'italic' }}>
+          <p style={{ color: '#6B4C2A', marginTop: '6px' }}>
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
         </div>
         {streak > 0 && (
           <div style={{
             display: 'flex', alignItems: 'center', gap: '6px',
-            background: 'linear-gradient(135deg, #F59E0B20, #EF444420)',
-            border: '1.5px solid #F59E0B',
-            borderRadius: '12px', padding: '8px 16px',
+            background: 'linear-gradient(135deg, #C9A84C20, #A0783A20)',
+            border: '1.5px solid #C9A84C',
+            borderRadius: '10px', padding: '8px 16px',
           }}>
             <span style={{ fontSize: '1.4rem' }}>🔥</span>
             <div>
-              <p style={{ fontWeight: 700, color: '#92400E', fontSize: '1.1rem', lineHeight: 1 }}>{streak}</p>
-              <p style={{ fontSize: '0.72rem', color: '#B45309' }}>day streak</p>
+              <p style={{ fontWeight: 700, color: '#5C3A1E', fontSize: '1.1rem', lineHeight: 1 }}>{streak}</p>
+              <p style={{ fontSize: '0.72rem', color: '#A0783A' }}>day streak</p>
             </div>
           </div>
         )}
@@ -91,7 +91,7 @@ const DashboardPage: FC = () => {
 
       {showQuestionnaire && (
         <div style={{ marginBottom: '32px' }}>
-          <h2 style={{ color: '#B8860B', marginBottom: '16px', fontFamily: 'Georgia, serif' }}>Welcome, Seeker! Let us personalize your sacred journey ☥</h2>
+          <h2 style={{ color: '#C9A84C', marginBottom: '16px', fontFamily: 'Georgia, serif' }}>Welcome! Let us personalize your sacred journey ☥</h2>
           <QuestionnaireForm onComplete={handleQuestionnaireComplete} />
         </div>
       )}
@@ -99,7 +99,7 @@ const DashboardPage: FC = () => {
       {!showQuestionnaire && dailyGuide && (
         <>
           {/* Progress */}
-          <div style={{ ...sectionStyle, background: '#fff', padding: '20px', borderRadius: '14px', boxShadow: '0 4px 16px rgba(0,0,0,0.06)', border: '1px solid #E2E8F0' }}>
+          <div style={{ ...sectionStyle, background: 'linear-gradient(160deg, #FFF8ED 0%, #F5E6C8 100%)', padding: '20px', borderRadius: '10px', boxShadow: '0 4px 16px rgba(44,24,16,0.08)', border: '1px solid #D4B896' }}>
             <ProgressBar
               value={progressPercent}
               label={`Daily Progress · ${completedCount} of ${totalActivities} activities`}
@@ -109,31 +109,31 @@ const DashboardPage: FC = () => {
 
           {/* Mood Check-in */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>☥ Mood Check-In</h2>
+            <h2 style={sectionTitleStyle}>💜 Mood Check-In</h2>
             <MoodTracker />
           </div>
 
           {/* Daily Affirmations */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>𓂀 Daily Affirmations</h2>
+            <h2 style={sectionTitleStyle}>✨ Daily Affirmations</h2>
             <AffirmationCard affirmations={dailyGuide.affirmations} />
           </div>
 
           {/* Meditation */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>☥ Today's Sacred Meditation</h2>
+            <h2 style={sectionTitleStyle}>🧘 Today's Meditation</h2>
             <MeditationCard meditation={dailyGuide.meditation} />
           </div>
 
           {/* Breathing */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>𓋹 Sacred Breathing Rite</h2>
+            <h2 style={sectionTitleStyle}>🌬️ Breathing Exercise</h2>
             <BreathingExercise exercise={dailyGuide.breathingExercise} />
           </div>
 
           {/* Meals */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>𓅃 Today's Nourishment</h2>
+            <h2 style={sectionTitleStyle}>🥗 Today's Meals</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
               <MealCard meal={dailyGuide.meals.breakfast} />
               <MealCard meal={dailyGuide.meals.lunch} />
@@ -144,13 +144,13 @@ const DashboardPage: FC = () => {
 
           {/* Daily Journal */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>𓏛 Sacred Scrolls · Journal</h2>
+            <h2 style={sectionTitleStyle}>📝 Daily Journal</h2>
             <JournalEntry />
           </div>
 
           {/* Grieving Support */}
           <div style={sectionStyle}>
-            <h2 style={sectionTitleStyle}>𓋹 Healing Path · Grief Support</h2>
+            <h2 style={sectionTitleStyle}>🕊️ Grieving Support</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
               {grievingSessions.map((session) => (
                 <GrievingSupport key={session.id} session={session} />

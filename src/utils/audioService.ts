@@ -11,18 +11,6 @@ export function speak(text: string, onEnd?: () => void): void {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 0.75;
   utterance.pitch = 0.9;
-  utterance.volume = 1.0;
-  if (onEnd) utterance.onend = onEnd;
-  window.speechSynthesis.speak(utterance);
-}
-
-/** Softer, more tender narration used specifically for grieving support sessions. */
-export function speakGrieving(text: string, onEnd?: () => void): void {
-  if (!('speechSynthesis' in window)) return;
-  stopSpeech();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = 0.65;
-  utterance.pitch = 0.85;
   utterance.volume = 0.9;
   if (onEnd) utterance.onend = onEnd;
   window.speechSynthesis.speak(utterance);
@@ -35,6 +23,17 @@ export function stopSpeech(): void {
 
 export function isSpeechSupported(): boolean {
   return 'speechSynthesis' in window;
+}
+
+export function speakGrieving(text: string, onEnd?: () => void): void {
+  if (!('speechSynthesis' in window)) return;
+  stopSpeech();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.65;
+  utterance.pitch = 0.85;
+  utterance.volume = 0.85;
+  if (onEnd) utterance.onend = onEnd;
+  window.speechSynthesis.speak(utterance);
 }
 
 // ─── Ambient Tones ──────────────────────────────────────────────────────────

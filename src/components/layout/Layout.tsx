@@ -8,7 +8,7 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'linear-gradient(135deg, #FDF6E3 0%, #F5E6C8 50%, #EDE0C4 100%)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'linear-gradient(160deg, #FBF5E6 0%, #EDD9A3 40%, #D4B896 80%, #C9A84C22 100%)' }}>
       <Navbar />
       <main style={{ flex: 1 }}>
         {children}

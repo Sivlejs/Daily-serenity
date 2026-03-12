@@ -11,10 +11,10 @@ interface MeditationCardProps {
 }
 
 const categoryColors: Record<string, string> = {
-  morning: '#B8860B',   /* Kemetic gold – sunrise */
-  evening: '#1B3A6B',   /* deep lapis blue – twilight */
-  focus: '#8B4513',     /* earthy sienna – grounded clarity */
-  sleep: '#4A3060',     /* dark violet-blue – night sky */
+  morning: '#C9A84C',  /* Kemetic gold – dawn */
+  evening: '#6B3FA0',  /* deep violet – dusk */
+  focus: '#1A5E7A',    /* Nile blue – clarity */
+  sleep: '#2C4A6E',    /* midnight blue – rest */
 };
 
 const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
@@ -102,14 +102,14 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
         <span style={{ fontSize: '0.8rem', background: categoryColors[meditation.category] + '20', color: categoryColors[meditation.category], padding: '3px 10px', borderRadius: '999px', fontWeight: 600, textTransform: 'capitalize' }}>
           {meditation.category}
         </span>
-        <span style={{ fontSize: '0.85rem', color: '#64748B' }}>⏱ {meditation.duration} min</span>
+        <span style={{ fontSize: '0.85rem', color: '#6B4C2A' }}>⏱ {meditation.duration} min</span>
       </div>
-      <h3 style={{ color: '#1B3A6B', marginBottom: '8px', fontFamily: 'Georgia, serif' }}>{meditation.title}</h3>
-      <p style={{ color: '#7A5C2E', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.6 }}>{meditation.description}</p>
+      <h3 style={{ color: '#2C1810', marginBottom: '8px', fontFamily: 'Georgia, serif' }}>{meditation.title}</h3>
+      <p style={{ color: '#6B4C2A', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.6 }}>{meditation.description}</p>
 
       {completed ? (
-        <div style={{ color: '#B8860B', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
-          ☥ Completed
+        <div style={{ color: '#1A5E7A', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
+          ✓ Completed
         </div>
       ) : (
         <>
@@ -123,12 +123,11 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
                   fontSize: '0.78rem',
                   padding: '4px 10px',
                   borderRadius: '999px',
-                  border: `1.5px solid ${narrationOn ? '#B8860B' : '#D4B483'}`,
-                  background: narrationOn ? '#B8860B15' : 'transparent',
-                  color: narrationOn ? '#B8860B' : '#7A5C2E',
+                  border: `1.5px solid ${narrationOn ? '#C9A84C' : '#D4B896'}`,
+                  background: narrationOn ? '#C9A84C20' : 'transparent',
+                  color: narrationOn ? '#A0783A' : '#9A8060',
                   cursor: 'pointer',
                   fontWeight: 600,
-                  fontFamily: 'Georgia, serif',
                 }}
               >
                 🎙 Narration {narrationOn ? 'On' : 'Off'}
@@ -142,12 +141,11 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
                   fontSize: '0.78rem',
                   padding: '4px 10px',
                   borderRadius: '999px',
-                  border: `1.5px solid ${musicOn ? '#1B3A6B' : '#D4B483'}`,
-                  background: musicOn ? '#1B3A6B15' : 'transparent',
-                  color: musicOn ? '#1B3A6B' : '#7A5C2E',
+                  border: `1.5px solid ${musicOn ? '#1A5E7A' : '#D4B896'}`,
+                  background: musicOn ? '#1A5E7A20' : 'transparent',
+                  color: musicOn ? '#1A5E7A' : '#9A8060',
                   cursor: 'pointer',
                   fontWeight: 600,
-                  fontFamily: 'Georgia, serif',
                 }}
               >
                 🎵 Music {musicOn ? 'On' : 'Off'}
@@ -164,11 +162,11 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
               width: 100,
               height: 100,
               borderRadius: '50%',
-              background: isRunning ? '#B8860B15' : '#FDF6E3',
-              border: `4px solid ${isRunning ? '#B8860B' : '#D4B483'}`,
+              background: isRunning ? '#C9A84C15' : '#F5E6C8',
+              border: `4px solid ${isRunning ? '#C9A84C' : '#D4B896'}`,
               transition: 'all 0.3s ease',
             }}>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: isRunning ? '#B8860B' : '#7A5C2E', fontVariantNumeric: 'tabular-nums' }}>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: isRunning ? '#A0783A' : '#6B4C2A', fontVariantNumeric: 'tabular-nums' }}>
                 {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
               </span>
             </div>
@@ -176,8 +174,8 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
 
           {/* Progress bar */}
           {isRunning && (
-            <div style={{ height: 6, background: '#D4B483', borderRadius: 3, marginBottom: '16px', overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${progress}%`, background: '#B8860B', borderRadius: 3, transition: 'width 1s linear' }} />
+            <div style={{ height: 6, background: '#D4B896', borderRadius: 3, marginBottom: '16px', overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg, #C9A84C, #A0783A)', borderRadius: 3, transition: 'width 1s linear' }} />
             </div>
           )}
 

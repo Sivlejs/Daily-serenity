@@ -13,85 +13,95 @@ const HomePage: FC = () => {
   }, [isAuthenticated, navigate]);
 
   const features = [
-    { icon: '☥', title: 'Sacred Meditation', desc: 'Voice-guided meditations inspired by ancient wisdom and Kemetic tradition.' },
-    { icon: '𓂀', title: 'Breathing Rites', desc: 'Sacred breathing exercises to restore balance and awaken inner calm.' },
-    { icon: '𓋹', title: 'Grief & Healing', desc: 'Compassionate support sessions for those walking the path of loss and renewal.' },
-    { icon: '𓅃', title: 'Daily Progress', desc: 'Track your journey and build a daily practice of peace and intention.' },
+    { icon: '𓂀', title: 'Mindfulness', desc: 'Guided meditations tailored to your mood and schedule.' },
+    { icon: '𓆉', title: 'Breathing', desc: 'Ancient and modern breathing practices to calm or energize.' },
+    { icon: '𓇋', title: 'Nutrition', desc: 'Mood-boosting meal suggestions for every time of day.' },
+    { icon: '𓂋', title: 'Progress', desc: 'Track your daily activities and build lasting harmony.' },
   ];
 
   const quotes = [
-    { text: 'Know thyself, and thou shalt know the gods.', author: 'Ancient Kemetic Inscription' },
-    { text: 'The heart that has truly loved never forgets.', author: 'Book of Coming Forth by Day' },
-    { text: 'Silence is the language of the gods — all else is poor translation.', author: 'Kemetic Proverb' },
+    { text: 'Know thyself and thou shalt know the gods.', author: 'Temple of Luxor inscription' },
+    { text: 'The heart that is pure knows no fear.', author: 'Ancient Egyptian proverb' },
+    { text: 'Every morning that you wake is a gift from the divine.', author: 'Kemetic wisdom' },
   ];
 
-  const goldBorder: import('react').CSSProperties = {
-    border: '1px solid #B8860B',
-    borderRadius: '16px',
+  const dividerStyle = {
+    color: '#C9A84C',
+    fontSize: '1rem',
+    letterSpacing: '0.5rem',
+    textAlign: 'center' as const,
+    marginBottom: '40px',
   };
 
   return (
     <div style={{ fontFamily: 'Georgia, serif' }}>
       {/* Hero */}
-      <section style={{ padding: '80px 1.5rem', textAlign: 'center', maxWidth: '740px', margin: '0 auto' }}>
-        <div style={{ fontSize: '3.5rem', marginBottom: '16px', letterSpacing: '0.3rem' }}>☥ 𓂀 ☥</div>
-        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#1B3A6B', marginBottom: '16px', lineHeight: 1.2, fontFamily: 'Georgia, serif' }}>
-          Welcome to <span style={{ color: '#B8860B' }}>Daily Serenity</span>
+      <section style={{ padding: '90px 1.5rem 70px', textAlign: 'center', maxWidth: '750px', margin: '0 auto' }}>
+        {/* Ankh symbol + hieroglyph-style decorative row */}
+        <div style={{ fontSize: '3rem', color: '#C9A84C', marginBottom: '8px', letterSpacing: '0.4rem' }}>☥</div>
+        <div style={{ ...dividerStyle, marginBottom: '20px' }}>✦ ─────────── ✦</div>
+        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#2C1810', marginBottom: '12px', lineHeight: 1.2, letterSpacing: '0.04em' }}>
+          Welcome to <span style={{ color: '#C9A84C' }}>Daily Serenity</span>
         </h1>
-        <p style={{ fontSize: '1.15rem', color: '#7A5C2E', marginBottom: '10px', lineHeight: 1.75, fontStyle: 'italic' }}>
-          "As above, so below — as within, so without."
+        <p style={{ fontSize: '0.9rem', color: '#A0783A', marginBottom: '18px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+          ✦ Harmony · Balance · Ma'at ✦
         </p>
-        <p style={{ fontSize: '1rem', color: '#5C4020', marginBottom: '36px', lineHeight: 1.7 }}>
-          Your sanctuary for mindfulness, healing, and ancient wisdom. Start each day with sacred intention,
-          and end it with gratitude. Let the light of Kemet guide your path.
+        <p style={{ fontSize: '1.1rem', color: '#5C3A1E', marginBottom: '36px', lineHeight: 1.8, maxWidth: '560px', margin: '0 auto 36px' }}>
+          Your all-in-one sanctuary for mindfulness, healthy nutrition, and breathing exercises.
+          Begin each day with sacred intention and close it with deep gratitude.
         </p>
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Button variant="primary" size="lg" onClick={() => navigate('/auth')}>Enter the Temple</Button>
+        <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Button variant="primary" size="lg" onClick={() => navigate('/auth')}>Begin Your Journey ☥</Button>
           <Button variant="outline" size="lg" onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}>
-            Explore the Path
+            Discover More
           </Button>
         </div>
       </section>
 
-      {/* Decorative divider */}
-      <div style={{ textAlign: 'center', color: '#B8860B', fontSize: '1.4rem', letterSpacing: '1rem', marginBottom: '8px' }}>
-        ─── ☥ ───
-      </div>
-
       {/* Features */}
-      <section id="features" style={{ padding: '60px 1.5rem', background: 'rgba(184,134,11,0.06)' }}>
+      <section id="features" style={{ padding: '70px 1.5rem', background: 'rgba(201,168,76,0.08)', borderTop: '1px solid #D4B896', borderBottom: '1px solid #D4B896' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <h2 style={{ textAlign: 'center', fontSize: '1.9rem', color: '#1B3A6B', marginBottom: '40px', fontFamily: 'Georgia, serif' }}>
-            The Pillars of Your Sacred Practice
+          <div style={dividerStyle}>✦ ─────────── ✦</div>
+          <h2 style={{ textAlign: 'center', fontSize: '1.9rem', color: '#2C1810', marginBottom: '42px', letterSpacing: '0.04em' }}>
+            Sacred Pillars of Daily Well-Being
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
             {features.map((f) => (
-              <div key={f.title} style={{ background: '#FFFDF5', padding: '28px', ...goldBorder, boxShadow: '0 4px 16px rgba(90,50,0,0.08)', textAlign: 'center' }}>
-                <div style={{ fontSize: '2.2rem', marginBottom: '12px', color: '#B8860B' }}>{f.icon}</div>
-                <h3 style={{ color: '#1B3A6B', marginBottom: '8px', fontFamily: 'Georgia, serif' }}>{f.title}</h3>
-                <p style={{ color: '#7A5C2E', fontSize: '0.9rem', lineHeight: 1.6 }}>{f.desc}</p>
+              <div key={f.title} style={{
+                background: 'linear-gradient(160deg, #FFF8ED 0%, #F5E6C8 100%)',
+                padding: '32px 24px',
+                borderRadius: '10px',
+                boxShadow: '0 4px 18px rgba(44,24,16,0.10)',
+                textAlign: 'center',
+                border: '1px solid #D4B896',
+              }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '14px', color: '#C9A84C' }}>{f.icon}</div>
+                <h3 style={{ color: '#2C1810', marginBottom: '8px', letterSpacing: '0.04em' }}>{f.title}</h3>
+                <p style={{ color: '#6B4C2A', fontSize: '0.9rem', lineHeight: 1.7 }}>{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Decorative divider */}
-      <div style={{ textAlign: 'center', color: '#B8860B', fontSize: '1.4rem', letterSpacing: '1rem', margin: '8px 0' }}>
-        ─── 𓂀 ───
-      </div>
-
       {/* Quotes */}
-      <section style={{ padding: '60px 1.5rem' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <h2 style={{ textAlign: 'center', fontSize: '1.8rem', color: '#1B3A6B', marginBottom: '36px', fontFamily: 'Georgia, serif' }}>
-            Words from the Ancients
+      <section style={{ padding: '70px 1.5rem' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+          <div style={dividerStyle}>✦ ─────────── ✦</div>
+          <h2 style={{ textAlign: 'center', fontSize: '1.8rem', color: '#2C1810', marginBottom: '40px', letterSpacing: '0.04em' }}>
+            Ancient Words of Wisdom
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '22px' }}>
             {quotes.map((q) => (
-              <div key={q.author} style={{ background: 'rgba(184,134,11,0.07)', padding: '24px', borderRadius: '14px', borderLeft: '4px solid #B8860B' }}>
-                <p style={{ color: '#2D1B00', fontStyle: 'italic', marginBottom: '12px', lineHeight: 1.7 }}>"{q.text}"</p>
-                <p style={{ color: '#B8860B', fontWeight: 700, fontSize: '0.85rem', fontFamily: 'Georgia, serif' }}>— {q.author}</p>
+              <div key={q.author} style={{
+                background: 'linear-gradient(160deg, #FFF8ED, #EDD9A3)',
+                padding: '28px',
+                borderRadius: '10px',
+                borderLeft: '4px solid #C9A84C',
+                boxShadow: '0 2px 12px rgba(44,24,16,0.08)',
+              }}>
+                <p style={{ color: '#2C1810', fontStyle: 'italic', marginBottom: '14px', lineHeight: 1.7, fontSize: '1rem' }}>"{q.text}"</p>
+                <p style={{ color: '#A0783A', fontWeight: 600, fontSize: '0.88rem', letterSpacing: '0.04em' }}>— {q.author}</p>
               </div>
             ))}
           </div>
@@ -99,28 +109,35 @@ const HomePage: FC = () => {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '60px 1.5rem', background: 'linear-gradient(135deg, #1B3A6B, #0F2347)', textAlign: 'center' }}>
-        <div style={{ fontSize: '2rem', color: '#B8860B', marginBottom: '12px', letterSpacing: '0.4rem' }}>☥ 𓋹 ☥</div>
-        <h2 style={{ color: '#DAA520', fontSize: '2rem', marginBottom: '12px', fontFamily: 'Georgia, serif' }}>Ready to walk the sacred path?</h2>
-        <p style={{ color: 'rgba(218,165,32,0.8)', marginBottom: '28px', fontSize: '1.05rem', fontStyle: 'italic' }}>
-          Join seekers building lives of peace, purpose, and ancient wisdom.
+      <section style={{
+        padding: '70px 1.5rem',
+        background: 'linear-gradient(135deg, #0F3D52 0%, #1A3A4A 50%, #0F2A1E 100%)',
+        textAlign: 'center',
+        borderTop: '2px solid #C9A84C',
+      }}>
+        <div style={{ fontSize: '2rem', color: '#C9A84C', marginBottom: '12px', letterSpacing: '0.4rem' }}>☥ 𓂀 ☥</div>
+        <h2 style={{ color: '#EDD9A3', fontSize: '2rem', marginBottom: '14px', letterSpacing: '0.06em', fontFamily: 'Georgia, serif' }}>
+          Ready to Find Your Serenity?
+        </h2>
+        <p style={{ color: 'rgba(237,217,163,0.8)', marginBottom: '32px', fontSize: '1.05rem', letterSpacing: '0.04em' }}>
+          Walk the path of balance and inner peace — as the ancients did before you.
         </p>
         <button
           onClick={() => navigate('/auth')}
           style={{
-            padding: '14px 34px',
+            padding: '14px 32px',
             fontSize: '1.1rem',
-            background: '#B8860B',
-            color: '#FDF6E3',
-            border: '2px solid #DAA520',
-            borderRadius: '10px',
+            background: 'linear-gradient(135deg, #C9A84C, #A0783A)',
+            color: '#FBF5E6',
+            border: '1px solid #A0783A',
+            borderRadius: '8px',
             fontWeight: 700,
             cursor: 'pointer',
             fontFamily: 'Georgia, serif',
-            letterSpacing: '0.04em',
+            letterSpacing: '0.06em',
           }}
         >
-          Begin Your Journey
+          ☥ Begin Your Journey
         </button>
       </section>
     </div>
