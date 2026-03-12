@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useApp } from '../contexts/AppContext';
 import { questions } from '../data/questionnaire';
-import { removeItem } from '../utils/storage';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 
 const ProfilePage: FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
-  const { questionnaireAnswers } = useApp();
+  const { questionnaireAnswers, resetProgress } = useApp();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,9 +25,7 @@ const ProfilePage: FC = () => {
   });
 
   const handleResetProgress = () => {
-    removeItem('ds_daily_progress');
-    removeItem('ds_questionnaire_answers');
-    window.location.reload();
+    resetProgress();
   };
 
   const handleLogout = () => {

@@ -62,8 +62,10 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         email,
         createdAt: new Date().toISOString(),
         hasCompletedQuestionnaire: false,
-        // NOTE: btoa is NOT secure hashing – this is demo-only client-side storage.
-        // A production app must use a backend with proper password hashing.
+        // SECURITY WARNING: btoa is Base64 encoding, NOT a cryptographic hash.
+        // This is intentionally demo-only client-side storage to avoid a backend
+        // dependency. A production application MUST use a server-side API with
+        // bcrypt/scrypt/Argon2 password hashing – never store credentials this way.
         passwordHash: btoa(email + ':' + password),
       };
       setItem(DS_USERS_KEY, [...users, newUser]);

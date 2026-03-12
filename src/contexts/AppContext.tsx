@@ -28,6 +28,7 @@ interface AppContextType {
   isActivityComplete: (activityId: string) => boolean;
   questionnaireAnswers: Record<string, string>;
   saveQuestionnaireAnswers: (answers: Record<string, string>) => void;
+  resetProgress: () => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -83,9 +84,18 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setQuestionnaireAnswers(answers);
   };
 
+  const resetProgress = (): void => {
+    removeItem(DS_PROGRESS_KEY);
+    removeItem(DS_ANSWERS_KEY);
+    setDailyGuide((prev) =>
+      prev ? { ...prev, completedActivities: [] } : prev,
+    );
+    setQuestionnaireAnswers({});
+  };
+
   return (
     <AppContext.Provider
-      value={{ dailyGuide, markActivityComplete, isActivityComplete, questionnaireAnswers, saveQuestionnaireAnswers }}
+      value={{ dailyGuide, markActivityComplete, isActivityComplete, questionnaireAnswers, saveQuestionnaireAnswers, resetProgress }}
     >
       {children}
     </AppContext.Provider>
