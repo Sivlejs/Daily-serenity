@@ -2,25 +2,31 @@ import type { FC } from 'react';
 
 const Footer: FC = () => {
   const style: import('react').CSSProperties = {
-    background: 'linear-gradient(90deg, #1B3A6B 0%, #0F2347 100%)',
-    color: '#DAA520',
+    background: 'linear-gradient(90deg, #0F3D52 0%, #1A3A4A 50%, #0F3D52 100%)',
+    borderTop: '2px solid #C9A84C',
+    color: '#A0906A',
     textAlign: 'center',
-    padding: '2.5rem 1.5rem',
+    padding: '2rem 1.5rem',
     marginTop: 'auto',
-    borderTop: '2px solid #B8860B',
   };
 
   return (
     <footer style={style}>
-      <div style={{ marginBottom: '0.75rem', fontSize: '1.6rem', letterSpacing: '0.5rem' }}>
-        ☥ 𓂀 𓋹
+      {/* Egyptian symbol row */}
+      <div style={{ fontSize: '1.5rem', letterSpacing: '0.6rem', color: '#C9A84C', marginBottom: '0.75rem' }}>
+        ☥ 𓂀 𓁹 𓆉 𓇋 𓂋 ☥
       </div>
       <div style={{ marginBottom: '0.5rem' }}>
-        <strong style={{ color: '#DAA520', fontFamily: 'Georgia, serif', fontSize: '1.1rem', letterSpacing: '0.06em' }}>Daily Serenity</strong>
+        <strong style={{ color: '#C9A84C', fontSize: '1.1rem', letterSpacing: '0.08em', fontFamily: 'Georgia, serif' }}>
+          Daily Serenity
+        </strong>
       </div>
-      <p style={{ fontSize: '0.85rem', color: '#C2915C' }}>Your sanctuary for mindfulness, balance, and ancient wisdom.</p>
-      <p style={{ fontSize: '0.8rem', marginTop: '0.75rem', color: '#7A9CC6' }}>
-        © {new Date().getFullYear()} Daily Serenity · All rights reserved.
+      <p style={{ fontSize: '0.82rem', letterSpacing: '0.04em' }}>Your companion for mindfulness, balance, and eternal well-being.</p>
+      <div style={{ fontSize: '0.75rem', marginTop: '0.75rem', color: '#A0906A', letterSpacing: '0.1em' }}>
+        ✦ PEACE · HARMONY · BALANCE · MA'AT ✦
+      </div>
+      <p style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: '#7A8FA0' }}>
+        © {new Date().getFullYear()} Daily Serenity. All rights reserved.
       </p>
     </footer>
   );
