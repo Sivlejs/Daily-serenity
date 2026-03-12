@@ -68,7 +68,7 @@ const Navbar: FC = () => {
               <Button variant="outline" size="sm" onClick={handleLogout}>Logout</Button>
             </div>
           ) : (
-            <Button variant="primary" size="sm" onClick={() => navigate('/auth')}>Sign In</Button>
+            <Button variant="primary" size="sm" onClick={() => navigate('/auth')}>Login / Register</Button>
           )}
         </div>
       </div>

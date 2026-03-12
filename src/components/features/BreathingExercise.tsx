@@ -168,7 +168,6 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
               color: voiceOn ? '#A0783A' : '#9A8060',
               cursor: 'pointer',
               fontWeight: 600,
-              fontFamily: 'Georgia, serif',
             }}
           >
             🎙 Voice {voiceOn ? 'On' : 'Off'}

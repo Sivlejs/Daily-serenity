@@ -128,7 +128,6 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
                   color: narrationOn ? '#A0783A' : '#9A8060',
                   cursor: 'pointer',
                   fontWeight: 600,
-                  fontFamily: 'Georgia, serif',
                 }}
               >
                 🎙 Narration {narrationOn ? 'On' : 'Off'}
@@ -147,7 +146,6 @@ const MeditationCard: FC<MeditationCardProps> = ({ meditation }) => {
                   color: musicOn ? '#1A5E7A' : '#9A8060',
                   cursor: 'pointer',
                   fontWeight: 600,
-                  fontFamily: 'Georgia, serif',
                 }}
               >
                 🎵 Music {musicOn ? 'On' : 'Off'}
