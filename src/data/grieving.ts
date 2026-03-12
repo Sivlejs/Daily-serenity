@@ -51,4 +51,24 @@ export const grievingSessions: GrievingSession[] = [
       'Acceptance does not mean that everything is okay. It means acknowledging what is real. Take a breath and say gently to yourself: this happened, and I am still here. With each exhale, release the fight against reality. With each inhale, welcome the present moment as it is. You have survived difficult moments before, and you carry a quiet strength within you.',
     musicTone: 'calm',
   },
+  {
+    id: 'g5',
+    title: 'Honouring the Bond',
+    description: 'A compassionate space to celebrate the love that connected you, and acknowledge how it lives on within you.',
+    duration: 9,
+    type: 'reflection',
+    guidedScript:
+      'The connection you shared was real, and love like that does not disappear — it transforms. Take a slow breath and bring to mind a moment when you felt most seen, most held, most yourself in the presence of what you have lost. Let yourself smile, or cry, or both. Your love was not wasted. It shaped you. It is still shaping you. That is not ending — that is legacy.',
+    musicTone: 'comfort',
+  },
+  {
+    id: 'g6',
+    title: 'Returning to the River',
+    description: 'Like the Nile that nourishes the land each season, this meditation guides you toward renewal after loss.',
+    duration: 11,
+    type: 'healing',
+    guidedScript:
+      'Imagine standing at the edge of a great river at dawn. The water is golden and ancient. This river has seen countless lives, countless loves, countless losses — and still it flows. Step into the shallows. Feel the cool water around your feet. With every gentle wave, let a little grief loosen and be carried downstream. You do not have to carry it all. The river is strong enough to hold it for you. Breathe. Remain. Slowly, the light grows warmer on your face.',
+    musicTone: 'healing',
+  },
 ];

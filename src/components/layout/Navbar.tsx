@@ -13,12 +13,12 @@ const Navbar: FC = () => {
   };
 
   const navStyle: import('react').CSSProperties = {
-    background: 'rgba(255,255,255,0.95)',
-    backdropFilter: 'blur(8px)',
-    borderBottom: '1px solid #E2E8F0',
+    background: 'linear-gradient(90deg, #1A3A4A 0%, #0F3D52 60%, #1A3A4A 100%)',
+    borderBottom: '2px solid #C9A84C',
     position: 'sticky',
     top: 0,
     zIndex: 100,
+    boxShadow: '0 2px 12px rgba(0,0,0,0.25)',
   };
 
   const innerStyle: import('react').CSSProperties = {
@@ -31,24 +31,40 @@ const Navbar: FC = () => {
     height: '64px',
   };
 
+  const linkStyle: import('react').CSSProperties = {
+    color: '#EDD9A3',
+    fontWeight: 500,
+    textDecoration: 'none',
+    letterSpacing: '0.04em',
+    transition: 'color 0.2s',
+  };
+
   return (
     <nav style={navStyle}>
       <div style={innerStyle}>
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '1.5rem' }}>🌸</span>
-          <span style={{ fontWeight: 700, fontSize: '1.2rem', color: '#7C3AED' }}>Daily Serenity</span>
+        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          {/* Ankh symbol */}
+          <span style={{ fontSize: '1.6rem', color: '#C9A84C', lineHeight: 1 }}>☥</span>
+          <div>
+            <span style={{ fontWeight: 700, fontSize: '1.2rem', color: '#C9A84C', letterSpacing: '0.06em', fontFamily: 'Georgia, serif' }}>
+              Daily Serenity
+            </span>
+            <div style={{ fontSize: '0.6rem', color: '#A0906A', letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1 }}>
+              ✦ Peace · Balance · Harmony ✦
+            </div>
+          </div>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <Link to="/" style={{ color: '#1E293B', fontWeight: 500, textDecoration: 'none' }}>Home</Link>
+          <Link to="/" style={linkStyle}>Home</Link>
           {isAuthenticated && (
             <>
-              <Link to="/dashboard" style={{ color: '#1E293B', fontWeight: 500, textDecoration: 'none' }}>Dashboard</Link>
-              <Link to="/profile" style={{ color: '#1E293B', fontWeight: 500, textDecoration: 'none' }}>Profile</Link>
+              <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
+              <Link to="/profile" style={linkStyle}>Profile</Link>
             </>
           )}
           {isAuthenticated ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <span style={{ color: '#64748B', fontSize: '0.9rem' }}>👋 {user?.name}</span>
+              <span style={{ color: '#A0906A', fontSize: '0.9rem' }}>☥ {user?.name}</span>
               <Button variant="outline" size="sm" onClick={handleLogout}>Logout</Button>
             </div>
           ) : (

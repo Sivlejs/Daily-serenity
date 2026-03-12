@@ -10,10 +10,10 @@ interface GrievingSupportProps {
 }
 
 const typeColors: Record<GrievingSession['type'], string> = {
-  comfort: '#EC4899',
-  reflection: '#8B5CF6',
-  healing: '#0D9488',
-  acceptance: '#3B82F6',
+  comfort: '#A0783A',    /* Kemetic gold – warmth */
+  reflection: '#1A5E7A', /* Nile blue – depth */
+  healing: '#5C3A1E',    /* earth – grounding */
+  acceptance: '#4A6B3A', /* Nile green – growth */
 };
 
 const typeEmoji: Record<GrievingSession['type'], string> = {
@@ -90,18 +90,18 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
         }}>
           {typeEmoji[session.type]} {session.type}
         </span>
-        <span style={{ fontSize: '0.85rem', color: '#64748B' }}>⏱ {session.duration} min</span>
+        <span style={{ fontSize: '0.85rem', color: '#6B4C2A' }}>⏱ {session.duration} min</span>
       </div>
 
-      <h3 style={{ color: '#1E293B', marginBottom: '8px' }}>{session.title}</h3>
-      <p style={{ color: '#64748B', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.6 }}>{session.description}</p>
+      <h3 style={{ color: '#2C1810', marginBottom: '8px', fontFamily: 'Georgia, serif' }}>{session.title}</h3>
+      <p style={{ color: '#6B4C2A', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.6 }}>{session.description}</p>
 
       {/* Script preview */}
       <blockquote style={{
         borderLeft: `3px solid ${color}`,
         paddingLeft: '12px',
         margin: '0 0 16px 0',
-        color: '#475569',
+        color: '#5C3A1E',
         fontSize: '0.88rem',
         fontStyle: 'italic',
         lineHeight: 1.7,
@@ -121,9 +121,9 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
               fontSize: '0.78rem',
               padding: '4px 10px',
               borderRadius: '999px',
-              border: `1.5px solid ${narrationOn ? '#7C3AED' : '#CBD5E1'}`,
-              background: narrationOn ? '#7C3AED15' : 'transparent',
-              color: narrationOn ? '#7C3AED' : '#94A3B8',
+              border: `1.5px solid ${narrationOn ? '#C9A84C' : '#D4B896'}`,
+              background: narrationOn ? '#C9A84C20' : 'transparent',
+              color: narrationOn ? '#A0783A' : '#9A8060',
               cursor: 'pointer',
               fontWeight: 600,
             }}
@@ -139,9 +139,9 @@ const GrievingSupport: FC<GrievingSupportProps> = ({ session }) => {
               fontSize: '0.78rem',
               padding: '4px 10px',
               borderRadius: '999px',
-              border: `1.5px solid ${musicOn ? '#0D9488' : '#CBD5E1'}`,
-              background: musicOn ? '#0D948815' : 'transparent',
-              color: musicOn ? '#0D9488' : '#94A3B8',
+              border: `1.5px solid ${musicOn ? '#1A5E7A' : '#D4B896'}`,
+              background: musicOn ? '#1A5E7A20' : 'transparent',
+              color: musicOn ? '#1A5E7A' : '#9A8060',
               cursor: 'pointer',
               fontWeight: 600,
             }}

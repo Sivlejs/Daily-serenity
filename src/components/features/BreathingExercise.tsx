@@ -13,10 +13,10 @@ interface BreathingExerciseProps {
 type Phase = 'inhale' | 'hold' | 'exhale' | 'idle';
 
 const phaseColors: Record<Phase, string> = {
-  inhale: '#7C3AED',
-  hold: '#F59E0B',
-  exhale: '#0D9488',
-  idle: '#94A3B8',
+  inhale: '#1A5E7A',   /* Nile blue – inward, receptive */
+  hold: '#C9A84C',     /* Kemetic gold – stillness */
+  exhale: '#5C3A1E',   /* earth brown – release */
+  idle: '#9A8060',     /* sand – rest */
 };
 
 const phaseLabels: Record<Phase, string> = {
@@ -145,11 +145,11 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
   return (
     <Card>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-        <h3 style={{ color: '#1E293B' }}>{exercise.name}</h3>
-        {completed && <span style={{ color: '#0D9488', fontWeight: 600 }}>✓ Done</span>}
+        <h3 style={{ color: '#2C1810', fontFamily: 'Georgia, serif' }}>{exercise.name}</h3>
+        {completed && <span style={{ color: '#1A5E7A', fontWeight: 600 }}>✓ Done</span>}
       </div>
-      <p style={{ color: '#64748B', fontSize: '0.9rem', marginBottom: '8px' }}>{exercise.description}</p>
-      <p style={{ color: '#7C3AED', fontSize: '0.85rem', fontWeight: 500, marginBottom: '16px' }}>
+      <p style={{ color: '#6B4C2A', fontSize: '0.9rem', marginBottom: '8px' }}>{exercise.description}</p>
+      <p style={{ color: '#A0783A', fontSize: '0.85rem', fontWeight: 500, marginBottom: '16px' }}>
         💡 {exercise.benefit}
       </p>
 
@@ -163,9 +163,9 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
               fontSize: '0.78rem',
               padding: '4px 10px',
               borderRadius: '999px',
-              border: `1.5px solid ${voiceOn ? '#7C3AED' : '#CBD5E1'}`,
-              background: voiceOn ? '#7C3AED15' : 'transparent',
-              color: voiceOn ? '#7C3AED' : '#94A3B8',
+              border: `1.5px solid ${voiceOn ? '#C9A84C' : '#D4B896'}`,
+              background: voiceOn ? '#C9A84C20' : 'transparent',
+              color: voiceOn ? '#A0783A' : '#9A8060',
               cursor: 'pointer',
               fontWeight: 600,
             }}
@@ -193,16 +193,16 @@ const BreathingExercise: FC<BreathingExerciseProps> = ({ exercise }) => {
             {phaseLabels[phase]}
           </span>
         </div>
-        <p style={{ color: '#64748B', fontSize: '0.85rem' }}>
+        <p style={{ color: '#6B4C2A', fontSize: '0.85rem' }}>
           Cycle {cyclesDone + (isRunning ? 1 : 0)} of {exercise.cycles}
         </p>
       </div>
 
       <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '12px' }}>
-        <span style={{ fontSize: '0.8rem', color: '#64748B' }}>In: {exercise.inhale}s</span>
-        {exercise.hold > 0 && <span style={{ fontSize: '0.8rem', color: '#64748B' }}>Hold: {exercise.hold}s</span>}
-        <span style={{ fontSize: '0.8rem', color: '#64748B' }}>Out: {exercise.exhale}s</span>
-        <span style={{ fontSize: '0.8rem', color: '#64748B' }}>{exercise.cycles} cycles</span>
+        <span style={{ fontSize: '0.8rem', color: '#6B4C2A' }}>In: {exercise.inhale}s</span>
+        {exercise.hold > 0 && <span style={{ fontSize: '0.8rem', color: '#6B4C2A' }}>Hold: {exercise.hold}s</span>}
+        <span style={{ fontSize: '0.8rem', color: '#6B4C2A' }}>Out: {exercise.exhale}s</span>
+        <span style={{ fontSize: '0.8rem', color: '#6B4C2A' }}>{exercise.cycles} cycles</span>
       </div>
 
       {!completed && (

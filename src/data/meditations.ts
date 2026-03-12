@@ -82,4 +82,34 @@ export const meditations: Meditation[] = [
       'Acknowledge any stress or tension you are carrying right now. It is okay to feel this way. Breathe in slowly for four counts, hold gently for four counts, and breathe out for four counts. With each cycle, imagine the tension dissolving like fog in sunlight. You are safe. You are capable. This moment of calm is yours.',
     musicTone: 'calm',
   },
+  {
+    id: 'med8',
+    title: 'Inner Sanctuary',
+    description: 'Journey within to discover your sacred inner space — a place of timeless stillness and divine knowing.',
+    duration: 10,
+    category: 'morning',
+    guidedScript:
+      'Close your eyes and imagine a vast temple of light within your heart. Its walls are ancient stone, warm with the glow of a thousand candles. You are the keeper of this sanctuary. With each breath, feel its sacred stillness expand outward. Nothing outside can disturb this inner peace. Rest here, in this holy place of your own being.',
+    musicTone: 'healing',
+  },
+  {
+    id: 'med9',
+    title: 'River of Awareness',
+    description: 'Float gently on the current of present-moment awareness, letting thoughts pass like leaves on the Nile.',
+    duration: 8,
+    category: 'focus',
+    guidedScript:
+      'Imagine you are sitting beside a great, slow-moving river. Thoughts and feelings float past like boats on the water — you watch them drift by without grasping or pushing away. You are not the boats; you are the riverbank, steady and still. Breathe slowly. The river flows. You remain. Present. Aware. At peace.',
+    musicTone: 'calm',
+  },
+  {
+    id: 'med10',
+    title: 'Starlight Restoration',
+    description: 'Under a canopy of ancient stars, restore your energy and reconnect with the cosmos before sleep.',
+    duration: 12,
+    category: 'sleep',
+    guidedScript:
+      'Imagine lying beneath a boundless night sky, dark as deep water, scattered with stars that have watched over humanity for thousands of years. Let their ancient light wash over you. Your body is heavy and warm. Your mind grows quiet as starlight. You are held by the universe itself. Let go completely and surrender to the deep, healing embrace of the night.',
+    musicTone: 'sleep',
+  },
 ];
