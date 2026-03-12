@@ -3,16 +3,19 @@ import type { FC, ReactNode } from 'react';
 import type { Meditation } from '../data/meditations';
 import type { BreathingExercise } from '../data/breathing';
 import type { MealSuggestion } from '../data/meals';
+import type { Affirmation } from '../data/affirmations';
 import { meditations } from '../data/meditations';
 import { breathingExercises } from '../data/breathing';
 import { meals } from '../data/meals';
-import { getTodaysMeditation, getTodaysBreathingExercise, getTodaysMeals } from '../utils/scheduler';
+import { affirmations } from '../data/affirmations';
+import { getTodaysMeditation, getTodaysBreathingExercise, getTodaysMeals, getTodaysAffirmations } from '../utils/scheduler';
 import { getItem, setItem, removeItem } from '../utils/storage';
 
 interface DailyGuide {
   meditation: Meditation;
   breathingExercise: BreathingExercise;
   meals: { breakfast: MealSuggestion; lunch: MealSuggestion; dinner: MealSuggestion; snack: MealSuggestion };
+  affirmations: Affirmation[];
   completedActivities: string[];
   date: string;
 }
@@ -58,6 +61,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const meditation = getTodaysMeditation(meditations);
     const breathingExercise = getTodaysBreathingExercise(breathingExercises);
     const mealPlan = getTodaysMeals(meals);
+    const dailyAffirmations = getTodaysAffirmations(affirmations, 3);
     const stored = getItem<DailyProgress>(DS_PROGRESS_KEY);
     let completedActivities: string[] = [];
     if (stored) {
@@ -68,7 +72,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         removeItem(DS_PROGRESS_KEY);
       }
     }
-    return { meditation, breathingExercise, meals: mealPlan, completedActivities, date: today };
+    return { meditation, breathingExercise, meals: mealPlan, affirmations: dailyAffirmations, completedActivities, date: today };
   });
   const [questionnaireAnswers, setQuestionnaireAnswers] = useState<Record<string, string>>(
     () => getItem<Record<string, string>>(DS_ANSWERS_KEY) ?? {},

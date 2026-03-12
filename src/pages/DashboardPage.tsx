@@ -9,6 +9,7 @@ import BreathingExercise from '../components/features/BreathingExercise';
 import MealCard from '../components/features/MealCard';
 import MoodTracker from '../components/features/MoodTracker';
 import JournalEntry from '../components/features/JournalEntry';
+import AffirmationCard from '../components/features/AffirmationCard';
 import ProgressBar from '../components/ui/ProgressBar';
 
 const DashboardPage: FC = () => {
@@ -104,6 +105,12 @@ const DashboardPage: FC = () => {
           <div style={sectionStyle}>
             <h2 style={sectionTitleStyle}>💜 Mood Check-In</h2>
             <MoodTracker />
+          </div>
+
+          {/* Daily Affirmations */}
+          <div style={sectionStyle}>
+            <h2 style={sectionTitleStyle}>✨ Daily Affirmations</h2>
+            <AffirmationCard affirmations={dailyGuide.affirmations} />
           </div>
 
           {/* Meditation */}
